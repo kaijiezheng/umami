@@ -1,0 +1,6 @@
+{
+    "db": "mongodb://localhost/mean-dev",
+    "app": {
+        "name": "mellifluousmustelid - Voice controlled recipe app - Development"
+    }
+}
