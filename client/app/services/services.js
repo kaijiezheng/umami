@@ -1,4 +1,4 @@
-angular.module('shortly.services', [])
+angular.module('umami.services', [])
 
 .factory('Links', function ($http) {
   // Your code here

@@ -1,4 +1,4 @@
-angular.module('shortly.shorten', [])
+angular.module('umami.shorten', [])
 
 .controller('ShortenController', function ($scope, $location, Links) {
   // Your code here
@@ -15,4 +15,4 @@ angular.module('shortly.shorten', [])
         console.log(error);
       });
   };
-  });
+});

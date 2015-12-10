@@ -1,4 +1,4 @@
-angular.module('shortly.links', [])
+angular.module('umami.links', [])
 
 .controller('LinksController', function ($scope, Links) {
   // Your code here
