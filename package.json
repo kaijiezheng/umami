@@ -4,11 +4,10 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "karma start karma.conf.js",
     "start": "gulp",
     "lint": "jscs ./"
   },
-  "pre-commit": "lint",
+
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^1.5.7",
