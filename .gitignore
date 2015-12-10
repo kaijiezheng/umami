@@ -24,4 +24,15 @@ build/Release
 
 # Dependency directory
 # https://www.npmjs.org/doc/misc/npm-faq.html#should-i-check-my-node_modules-folder-into-git
-node_modules
+/nohup.out
+.DS_Store
+.nodemonignore
+.sass-cache/
+.bower-*/
+node_modules/
+public/lib
+test/coverage
+mean.iml
+/app/components
+.idea/
+
