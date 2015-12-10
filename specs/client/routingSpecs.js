@@ -21,12 +21,12 @@ describe('Routing', function () {
   it('Should have /links route, template, and controller', function () {
     expect($route.routes['/links']).to.be.ok();
     expect($route.routes['/links'].controller).to.be('LinksController');
-    expect($route.routes['/links'].templateUrl).to.be('app/links/links.html');
+    expect($route.routes['/links'].templateUrl).to.be('app/links/searchResults.html');
   });
 
   it('Should have /shorten route, template, and controller', function () {
     expect($route.routes['/shorten']).to.be.ok();
     expect($route.routes['/shorten'].controller).to.be('ShortenController');
-    expect($route.routes['/shorten'].templateUrl).to.be('app/shorten/shorten.html');
+    expect($route.routes['/shorten'].templateUrl).to.be('app/shorten/recipeDisplay.html');
   });
 });
