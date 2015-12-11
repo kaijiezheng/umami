@@ -6,7 +6,7 @@
     <button class="ui button">Search</button>
 </div>
   <div class="recipes">
-    <div class="ui divided items" ng-repeat="recipe in recipes | orderBy:'datePublished'">
+    <div class="ui items" ng-repeat="recipe in recipes | orderBy:'datePublished'">
       <div class="item">
         <div class="image">
           <img class="foodPic" ng-src="{{recipe.image}}" onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">

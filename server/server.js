@@ -13,7 +13,7 @@
     that controller then requires the respective model and sets up all our endpoints which respond to requests
 */
 
-var SERVER_PORT = process.env.PORT || '3000';
+var SERVER_PORT = process.env.PORT || '8000';
 var DB_HOST = process.env.HOST || 'localhost:9200';
 
 var express = require('express');
