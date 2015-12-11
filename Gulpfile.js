@@ -8,6 +8,7 @@ var when = require('gulp-if');
 var shell = require('gulp-shell');
 
 
+
 // the paths to our app files
 var paths = {
   // all our client app js files, not including 3rd party js files
@@ -43,4 +44,5 @@ gulp.task('serve', function () {
 });
 
 gulp.task('default', ['start']);
+
 
