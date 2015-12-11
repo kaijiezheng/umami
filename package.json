@@ -4,10 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "gulp",
-    "lint": "jscs ./"
+    "start": "gulp"
   },
-
   "license": "ISC",
   "devDependencies": {
     "browser-sync": "^1.5.7",
@@ -35,6 +33,7 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.4.3",
+    "elasticsearch": "^10.0.1",
     "express": "^4.4.5",
     "jwt-simple": "^0.2.0",
     "mongoose": "^4.1.0",

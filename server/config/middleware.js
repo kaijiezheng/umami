@@ -1,28 +1,31 @@
-var morgan = require('morgan'); // used for logging incoming request
+// Logging incoming requests
+var morgan = require('morgan');
 var bodyParser = require('body-parser');
-var helpers = require('./helpers.js'); // our custom middleware
-
+// Custom middleware for error and token handling
+var helpers = require('./helpers.js');
 
 module.exports = function (app, express) {
-  // Express 4 allows us to use multiple routers with their own configurations
+  // User and recipe routers have their own configurations
   var userRouter = express.Router();
-  var linkRouter = express.Router();
+  var recipeRouter = express.Router();
 
   app.use(morgan('dev'));
   app.use(bodyParser.urlencoded({extended: true}));
   app.use(bodyParser.json());
   app.use(express.static(__dirname + '/../../client'));
 
+  app.use('/api/users', userRouter);
 
-  app.use('/api/users', userRouter); // use user router for all user request
+  // Optional token handling if we want to make users sign up and sign in
+  // app.use('/api/recipes', helpers.decode);
 
-  // authentication middleware used to decode token and made available on the request
-  //app.use('/api/links', helpers.decode);
-  app.use('/api/links', linkRouter); // user link router for link request
+  app.use('/api/recipes', recipeRouter);
+
+  // Error logging and handling
   app.use(helpers.errorLogger);
   app.use(helpers.errorHandler);
 
-  // inject our routers into their respective route files
-  //require('../users/userRoutes.js')(userRouter);
-  //require('../links/linkRoutes.js')(linkRouter);
+  // Inject our routers into their respective route files
+  require('../users/userRoutes.js')(userRouter);
+  require('../recipes/recipeRoutes.js')(recipeRouter);
 };
