@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <title>Welcome to Umami</title>
+    <link rel="stylesheet" type="text/css" href="dist/semantic.min.css" />
     <link rel="stylesheet" type="text/css" href="styles/style.css" />
   </head>
   <body>
@@ -11,6 +12,10 @@
     <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
     <div ng-view></div>
 
+    <script src="lib/jquery/dist/jquery.min.js"></script>
+    <script src="dist/semantic.min.js"></script>
+
+    <script src="lib/angular/angular.js"></script>
     <script src="lib/angular/angular.js"></script>
     <script src="lib/angular-route/angular-route.js"></script>
 
@@ -18,6 +23,7 @@
     <script src="app/links/searchResults.js"></script>
     <script src="app/shorten/recipeDisplay.js"></script>
     <script src="app/services/services.js"></script>
+    <script src="app/testdata.js"></script>
     <script src="app/app.js"></script>
   </body>
 </html>

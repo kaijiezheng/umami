@@ -1,7 +1,7 @@
 /**
  * Created by oliverwang on 12/10/15.
  */
-module.exports = {data: [{
+window.testData = {data: [{
 
     "_id": {"$oid": "5160756b96cc62079cc2db15"},
     "name": "Drop Biscuits and Sausage Gravy",
@@ -127,4 +127,4 @@ module.exports = {data: [{
     "datePublished": "2013-01-27",
     "prepTime": "PT5M",
     "description": "Za'atar is an incredibly versatile Middle Eastern spice blend, one of my favorites. Particularly this time of year when it's a welcome addition to all sorts of roasted vegetables, soups and stews, or simply sprinkled over everything from yogurt, to eggs, to savory granola."
-}];
+}]};

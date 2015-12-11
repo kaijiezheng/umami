@@ -6,6 +6,11 @@ var bs = require('browser-sync');
 var reload = bs.reload;
 var when = require('gulp-if');
 var shell = require('gulp-shell');
+var
+    gulp  = require('gulp'),
+    watch = require('./semantic/tasks/watch'),
+    build = require('./semantic/tasks/build')
+    ;
 
 
 // the paths to our app files
@@ -43,4 +48,6 @@ gulp.task('serve', function () {
 });
 
 gulp.task('default', ['start']);
+gulp.task('watch ui', watch);
+gulp.task('build ui', build);
 

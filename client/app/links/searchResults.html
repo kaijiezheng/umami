@@ -1,29 +1,26 @@
-<div id='container'>
+<div class='ui container'>
   <!-- Your html here -->
 
-  <nav class="navigation">
-    <ul>
-      <li>
-          <a class="selected" href="#/links">Links</a>
-      </li>
-       <li>
-          <a href="#/shorten">Shorten</a>
-      </li>
-    </ul>
-  </nav>
+<div class="ui big action input">
+    <input type="text" placeholder="Search...">
+    <button class="ui button">Search</button>
 </div>
-<input type='text' ng-model='search' placeholder='filter' />
-<div class="links">
-  <div class="link"
-      ng-repeat="link in data.links | filter:search | orderBy:'created_at'">
-    <img src="assets/redirect_icon.png">
-    <div class="info">
-      <div class="visits">
-        <span class="count">{{ link.visits }}</span>Visits
+  <div class="recipes">
+    <div class="ui divided items" ng-repeat="recipe in recipes | orderBy:'datePublished'">
+      <div class="item">
+        <div class="image">
+          <img class="foodPic" ng-src="{{recipe.image}}" onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">
+        </div>
+        <div class="content">
+          <div class="header">{{ recipe.name }} <span class="ui right floated"><i class="like icon"></i></span></div>
+          <div class="meta">
+            <span>Description</span>
+          </div>
+          <div class="description"><p>{{ recipe.description }}</p></div>
+
+          <div class="extra">Cook Time: {{ recipe.cookTime.replace("PT", "").replace('M', 'Min') }} Prep Time: {{ recipe.prepTime.replace("PT", "").replace('M', 'Min') }}</div>
+        </div>
       </div>
-      <div class="title">{{ link.title }}</div>
-      <div class="original">{{ link.url }}</div>
-      <a href="http://localhost:8000/api/links/{{ link.code }}">{{ link.base_url }}/{{ link.code }}</a>
     </div>
   </div>
-  </div>
+</div>

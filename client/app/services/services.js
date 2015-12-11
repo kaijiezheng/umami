@@ -26,6 +26,17 @@ angular.module('shortly.services', [])
     addLink: addLink
   };
   })
+.factory('searchResult', function (){
+    var storage;
+
+    function setStorage(data) {
+        storage = data;
+    }
+
+    function getStorage() {
+        return storage;
+    }
+})
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
   // it is responsible for authenticating our user
