@@ -1,8 +1,9 @@
-angular.module('shortly', [
-  'shortly.services',
-  'shortly.links',
-  'shortly.shorten',
-  'shortly.auth',
+angular.module('umami', [
+  'umami.services',
+  'umami.links',
+  'umami.shorten',
+  'umami.auth',
+  'umami.recipe',
   'ngRoute'
 ])
 .config(function ($routeProvider, $httpProvider) {
@@ -27,6 +28,10 @@ angular.module('shortly', [
       controller: 'ShortenController',
       //authenticate: true
     })
+    .when('/recipe', {
+      templateUrl: 'app/recipe/recipe.html',
+      controller: 'RecipeController',
+    })
     .otherwise({
       redirectTo: '/links'
     });
@@ -42,7 +47,7 @@ angular.module('shortly', [
   // then add it to the header so the server can validate the request
   var attach = {
     request: function (object) {
-      var jwt = $window.localStorage.getItem('com.shortly');
+      var jwt = $window.localStorage.getItem('com.umami');
       if (jwt) {
         object.headers['x-access-token'] = jwt;
       }

@@ -1,10 +1,10 @@
 {
-  "name": "shortly-angular",
-  "version": "0.0.0",
+  "name": "umami",
+  "version": "0.0.1",
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
   },
   "license": "ISC",
   "devDependencies": {
@@ -40,6 +40,7 @@
     "morgan": "^1.1.1",
     "passport": "^0.2.0",
     "passport-local": "^1.0.0",
+    "pg": "^4.4.3",
     "q": "^1.0.1",
     "request": "^2.36.0",
     "semantic-ui": "^2.1.6"

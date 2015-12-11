@@ -1,0 +1,16 @@
+<div class="container" ng-controller="RecipeController">
+
+<h1>{{hello}}</h1>
+<article class="h-recipe">
+  <h1 class="p-name">{{recipe.name}}</h1>
+  <ul>
+    <li class="p-ingredient" ng-repeat="ingredient in recipe.ingredients">{{ingredient}}</li>
+  </ul>
+  <div class="e-instructions">
+    <ol>
+      <li ng-repeat="instruction in recipe.instructions">{{instruction}}</li>
+    </ol>
+  </div>
+</article>
+
+</div>

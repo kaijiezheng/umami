@@ -29,7 +29,9 @@ var client = new elasticsearch.Client({
 // Configure our server with all the middleware and and routing
 require('./config/middleware.js')(app, express);
 
-app.listen(SERVER_PORT);
+app.listen(SERVER_PORT, function(){
+  console.log("Listening on port " + SERVER_PORT);
+});
 
 // Export our app and db for testing and flexibility, required by index.js
 module.exports = {
