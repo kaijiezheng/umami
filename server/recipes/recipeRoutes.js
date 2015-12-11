@@ -5,8 +5,8 @@ module.exports = function (app, client) {
   
   // Can use app.param('path', handler) to hijack requests and preprocess
 
-  app.route('/').get(recipeController.allRecipes);
-  app.route('/').post(recipeController.newRecipe);
+  app.route('/all').get(recipeController.allRecipes);
+  app.route('/new').post(recipeController.newRecipe);
 
   app.route('/favorites').get(recipeController.retrieveFavorites);
   app.route('/favorites').post(recipeController.addFavorite);
