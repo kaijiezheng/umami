@@ -4,8 +4,7 @@ angular.module('umami', [
   'umami.shorten',
   'umami.auth',
   'umami.recipe',
-  'ngRoute',
-  'angular-packery'
+  'ngRoute'
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
@@ -19,7 +18,7 @@ angular.module('umami', [
     })
     // Your code here
 
-    .when('/links', {
+    .when('/search', {
       templateUrl: 'app/links/searchResults.html',
       controller: 'LinksController',
       //authenticate: true
@@ -34,12 +33,12 @@ angular.module('umami', [
       controller: 'RecipeController',
     })
     .otherwise({
-      redirectTo: '/links'
+      redirectTo: '/search'
     });
 
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
-    $httpProvider.interceptors.push('AttachTokens');
+    //$httpProvider.interceptors.push('AttachTokens');
 })
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor

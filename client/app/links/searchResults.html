@@ -1,33 +1,39 @@
-  <div class="wrapper">
-    <div ng-repeat="item in windowItems track by $index" class="itemwin" style="width: 200px; height: 200px; margin: 10px;" testpackery>
-      <img ng-src="{{item}}" alt="">
-      {{item}}
-    </div>
-  </div>
 <div class='ui container'>
   <!-- Your html here -->
-
-<div class="ui big action input">
-    <input type="text" placeholder="Search...">
-    <button class="ui button">Search</button>
-</div>
+  <div class="ui icon big action input">
+    <input type="text" ng-model="searchText" placeholder="Search...">
+    <button class="ui button" ng-click="search()">Search</button>
+  </div>
   <div class="ui horizontal divider">
     Search Results
   </div>
-  <div class="recipes">
-    <div class="ui items" ng-repeat="recipe in recipes | orderBy:'datePublished'">
-      <div class="item">
-        <div class="image">
-          <img class="foodPic" ng-src="{{recipe.image}}" onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">
-        </div>
-        <div class="content">
-          <div class="header">{{ recipe.name }} <span class="ui right floated"><i class="like icon"></i></span></div>
-          <div class="meta">
-            <span>Description</span>
-          </div>
-          <div class="description"><p>{{ recipe.description }}</p></div>
 
-          <div class="extra">Cook Time: {{ recipe.cookTime.replace("PT", "").replace('M', 'Min') }} Prep Time: {{ recipe.prepTime.replace("PT", "").replace('M', 'Min') }}</div>
+  <!--this is the code for packery. currently not working. to be debugged for the next iteration-->
+  <!--<div class="module-container" workspace>-->
+  <!--&lt;!&ndash; sizers &ndash;&gt;-->
+  <!--&lt;!&ndash;<div class="module-sizer"></div>&ndash;&gt;-->
+  <!--&lt;!&ndash;<div class="gutter-sizer"></div>&ndash;&gt;-->
+  <!--{{recipes}}-->
+  <!--<div ng-repeat="recipe in recipes track by $index | orderBy:'datePublished'">-->
+  <!--<img class="module" ng-class="{'wide': $index%4 === 0}" ng-src="{{recipe.image}}}" onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">-->
+  <!--</div>-->
+  <!--</div>-->
+
+
+  <div class="ui link relaxed divided items">
+    <div ng-click="goRecipe(recipe)" class="item" ng-repeat="recipe in recipes track by $index">
+      <div class="image">
+        <img class="foodPic" ng-src="{{recipe.image || assets/Recipesfallback.png}}"
+             onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">
+      </div>
+      <div class="content">
+        <div class="header">{{ recipe.name }}</div>
+        <div class="meta">
+          <span>Description</span>
+        </div>
+        <div class="description"><p>{{ recipe.description }}</p></div>
+        <div class="extra">Cook Time: {{ recipe.cookTime.replace("PT", "").replace('M', 'Min') }} Prep Time: {{
+          recipe.prepTime.replace("PT", "").replace('M', 'Min') }}
         </div>
       </div>
       <div class="ui section divider"></div>
