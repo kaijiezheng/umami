@@ -4,7 +4,7 @@ var client = new es.Client({
   host: 'localhost:9200'
 });
 
-fs.readFile('./recipeitems-latest.json', 'utf8', function(err, data) {
+fs.readFile('./epicurious-recipes-filtered-scraped.json', 'utf8', function(err, data) {
   if (err) { throw err; }
 
   // Build up a giant bulk request for elasticsearch.
