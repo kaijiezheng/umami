@@ -2,7 +2,7 @@ angular.module('umami.recipe', ['ngRoute'])
 
 .controller('RecipeController', function ($scope) {
   // Your code here
-  $scope.hello = "hello umami";
+  $scope.hello = "hello umami voice";
   var recipe = {
     name: 'Crêpes',
     ingredients: [
@@ -14,29 +14,9 @@ angular.module('umami.recipe', ['ngRoute'])
       'Mix',
       'Cook'],
     picUrl: "assets/chocolate.jpg"
+    currInstruction: 0;
   };
   $scope.recipe = recipe;
-
-  /**
-    wantsIngredients - given a text input, tests whether a user wants ingredient list
-
-    @param  {string}  input   user provided input
-    @return {boolean}         true if user wants ingredients, false otherwise
-   */
-  var wantsIngredients = function(input){
-    return true; // placeholder result to test
-  };
-
-
-  /**
-    getIngredients - get ingredient list
-
-    @param
-    @return {string}  comma-separated list of ingredients
-   */
-  var getIngredients = function(){
-    return recipe['ingredients'].join(',');
-  }
 
   console.log(getIngredients());
 
@@ -68,5 +48,78 @@ angular.module('umami.recipe', ['ngRoute'])
   }
   };
   recognizer.start();
+
+  /**
+    =======================================
+    Methods 
+    =======================================
+  */
+
+
+
+  
+  /**
+    =======================================
+    Filters 
+    =======================================
+  */
+
+
+  /**
+    wantsAllIngredients - check if a user wants the list of ingredients
+
+    @param  {string}  phrase      Input phrase
+    @return {boolean }            True if user wants the list of all ingredients
+                                  False otherwise
+   */   
+  function wantsAllIngredients(phrase){
+    var s = nlp.pos(phrase).sentences[0];
+    var nounsFound = s.nouns().map(getText);
+    return (nounsFound.indexOf('ingredients') !== -1);
+  };
+
+
+  /**
+    wantsOneIngredient - check if a user wants any of the ingredients in recipe
+    
+    @param {string} phrase    Input phrase
+    @return {boolean}         True, if user input has ingredient that's in the recipe
+                              False, otherwise
+   */
+  function wantsOneIngredient(phrase){
+    var ingredients = getIngredients();
+    for (var k = 0; k < ingredients.length; k++){
+      var item = ingredients[k];
+      if (isWordFound(phrase, item)) return true;
+    }
+    return false;  // recipe contains no ingredients uttered in phrase
+  }
+
+  function wantsNextInstruction(phrase){
+    return (isWordFound(phrase, "next"));
+  }
+
+  function wantsQuantity(phrase){
+    if (isWordFound(phrase, "many")) return true;
+    if (isWordFound(phrase, "much")) return true;
+    return false;
+  }
+
+  /** 
+  =======================================
+    Helper functions
+  =======================================
+   */
+    
+  function getText(obj){
+    return obj.text;
+  }
+
+  function isWordFound(phrase, word){
+    var tokenObjs = nlp.tokenize(phrase);
+    var tokens = tokenObjs[0].tokens.map(getText);
+    return (tokens.indexOf(word) !== -1);
+  }
+
 
 });
