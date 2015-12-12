@@ -2,17 +2,18 @@ angular.module('umami.recipe', ['ngRoute'])
 
 .controller('RecipeController', function ($scope) {
   // Your code here
-  $scope.hello = "hello umami";  
+  $scope.hello = "hello umami";
   var recipe = {
     name: 'Crêpes',
     ingredients: [
-      '1 cup flour', 
-      '1 egg', 
-      '1/4 teaspoon salt', 
+      '1 cup flour',
+      '1 egg',
+      '1/4 teaspoon salt',
       '1 1/4 cup milk'],
     instructions: [
       'Mix',
-      'Cook']
+      'Cook'],
+    picUrl: "assets/chocolate.jpg"
   };
   $scope.recipe = recipe;
 
@@ -20,7 +21,7 @@ angular.module('umami.recipe', ['ngRoute'])
     wantsIngredients - given a text input, tests whether a user wants ingredient list
 
     @param  {string}  input   user provided input
-    @return {boolean}         true if user wants ingredients, false otherwise          
+    @return {boolean}         true if user wants ingredients, false otherwise
    */
   var wantsIngredients = function(input){
     return true; // placeholder result to test
@@ -64,7 +65,7 @@ angular.module('umami.recipe', ['ngRoute'])
           speechSynthesis.speak(u);
         }
       }
-  }  
+  }
   };
   recognizer.start();
 
