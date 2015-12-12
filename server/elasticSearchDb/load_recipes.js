@@ -4,7 +4,7 @@ var client = new es.Client({
   host: 'localhost:9200'
 });
 
-fs.readFile('./recipeitems-latest.json', 'utf8', function(err, data) {
+fs.readFile('./epicurious-recipes-filtered-scraped.json', 'utf8', function(err, data) {
   if (err) { throw err; }
 
   // Build up a giant bulk request for elasticsearch.
@@ -19,21 +19,21 @@ fs.readFile('./recipeitems-latest.json', 'utf8', function(err, data) {
     }
    
     // Rework the data slightly
-    recipe = {
-      id: obj._id.$oid, // Was originally a mongodb entry
-      name: obj.name,
-      source: obj.source,
-      url: obj.url,
-      recipeYield: obj.recipeYield,
-      ingredients: obj.ingredients.split('\n'),
-      prepTime: obj.prepTime,
-      cookTime: obj.cookTime,
-      datePublished: obj.datePublished,
-      description: obj.description
-    };
+    // recipe = {
+    //   id: obj._id.$oid, // Was originally a mongodb entry
+    //   name: obj.name,
+    //   source: obj.source,
+    //   url: obj.url,
+    //   recipeYield: obj.recipeYield,
+    //   ingredients: obj.ingredients.split('\n'),
+    //   prepTime: obj.prepTime,
+    //   cookTime: obj.cookTime,
+    //   datePublished: obj.datePublished,
+    //   description: obj.description
+    // };
 
-    bulk_request.push({index: {_index: 'recipes', _type: 'recipe', _id: recipe.id}});
-    bulk_request.push(recipe);
+    bulk_request.push({index: {_index: 'recipes', _type: 'recipe', _id: obj.id}});
+    bulk_request.push(obj);
     return bulk_request;
   }, []);
 
