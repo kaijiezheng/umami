@@ -1,12 +1,12 @@
-var recipeController = require('./recipeController.js');
 
-module.exports = function (app) {
+module.exports = function (app, client) {
+  var recipeController = require('./recipeController.js')(client);
   // app is actually the recipeRouter injected from middleware.js
   
   // Can use app.param('path', handler) to hijack requests and preprocess
 
-  app.route('/').get(recipeController.allRecipes);
-  app.route('/').post(recipeController.newRecipe);
+  app.route('/all').get(recipeController.allRecipes);
+  app.route('/new').post(recipeController.newRecipe);
 
   app.route('/favorites').get(recipeController.retrieveFavorites);
   app.route('/favorites').post(recipeController.addFavorite);

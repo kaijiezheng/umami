@@ -1,29 +1,96 @@
 // Elasticsearch client
-var client = require('../server.js').client;
 // Will not need Q given that it comes packages with elasticsearch
 var Q = require('q');
 // Util not being used at the moment
 var util = require('../config/utils.js');
 
-module.exports = {
-  allRecipes: function() {
-    // return all recipes in DB
-    // might want to filter out those already favorited, but unimportant atm
-  },
-  newRecipe: function() {
-    // user posts new recipe to database
-    // automatically add to their favorites and to general database
-  },
-  retrieveFavorites: function() {
-    // return user's favorite recipes
-  },
-  addFavorite: function() {
-    // add favorite recipe to user's account
-  },
-  searchRecipes: function() {
-    // search recipe database based on search term
+module.exports = function(client) {
+  return {
+    allRecipes: function(req, res, next) {
+      client.search({
+        index: 'recipes',
+        type: 'recipe'
+      })
+      .then(function(response) {
+        console.log('Succesfully retrieved all recipes');
+        // Returns an array of hits
+        res.json(response.hits.hits);
+        next();
+      }, function(error) {
+        console.log('Error in retrieving all recipes', error.message);
+        next(error);
+      });
+    },
+    newRecipe: function(req, res, next) {
+      // user posts new recipe to database
+      // automatically add to their favorites and to general database
+    },
+    retrieveFavorites: function(req, res, next) {
+      // return user's favorite recipes
+    },
+    addFavorite: function(req, res, next) {
+      // add favorite recipe to user's account
+    },
+    searchRecipes: function(req, res, next) {
+      console.log('Searching for specific recipes');
+      var userQuery = req.path.split('/')[2];
+      client.search({
+        index: 'recipes',
+        type: 'recipe',
+        body: {
+          query: {
+            filtered: {
+              query: {
+                match: {
+                  // match the query agains all of
+                  // the fields in the posts index
+                  _all: userQuery
+                }
+              }
+            }
+          }
+        }
+      })
+      .then(function(response) {
+        console.log('Succesfully retrieved all recipes');
+        // Returns an array of hits
+        res.json(response.hits.hits);
+        next();
+      }, function(error) {
+        console.log('Error in retrieving all recipes', error.message);
+        next(error);
+      });
+    }
   }
 };
+
+//  allLinks: function (req, res, next) {
+//  var findAll = Q.nbind(Link.find, Link);
+//
+//  findAll({})
+//    .then(function (links) {
+//      res.json(links);
+//    })
+//    .fail(function (error) {
+//      next(error);
+//    });
+//  },
+
+//  findUrl: function (req, res, next, code) {
+//    var findLink = Q.nbind(Link.findOne, Link);
+//    findLink({code: code})
+//      .then(function (link) {
+//        if (link) {
+//          req.navLink = link;
+//          next();
+//        } else {
+//          next(new Error('Link not added yet'));
+//        }
+//      })
+//      .fail(function (error) {
+//        next(error);
+//      });
+//  },
 
 
 // Example elastic search query with callback instead of promise

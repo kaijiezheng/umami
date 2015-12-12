@@ -4,7 +4,7 @@ var bodyParser = require('body-parser');
 // Custom middleware for error and token handling
 var helpers = require('./helpers.js');
 
-module.exports = function (app, express) {
+module.exports = function (app, express, client) {
   // User and recipe routers have their own configurations
   var userRouter = express.Router();
   var recipeRouter = express.Router();
@@ -27,5 +27,5 @@ module.exports = function (app, express) {
 
   // Inject our routers into their respective route files
   require('../users/userRoutes.js')(userRouter);
-  require('../recipes/recipeRoutes.js')(recipeRouter);
+  require('../recipes/recipeRoutes.js')(recipeRouter, client);
 };
