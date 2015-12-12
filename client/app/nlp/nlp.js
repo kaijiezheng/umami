@@ -30,7 +30,7 @@ var errorMsg = function(input, expected, result){
   console.log("Testing " + input + " should be " + expected + ", but got " + result + " instead");
 }
 
-var testPhrases = function(inputs, callback){
+var testInputs = function(inputs, callback){
   for (var k = 0; k < inputs.length; k++){
     var phrase = inputs[k][0];
     var expectedResult = inputs[k][1];
@@ -42,7 +42,7 @@ var testPhrases = function(inputs, callback){
 
 
 // tests for wantsAllIngredients()
-console.log("... testing wantsAllIngredients()");
+console.log("\n... testing wantsAllIngredients()");
 var inputs = [
   ["What are the ingredients", true],
   ["How much salt and pepper do I need", false],
@@ -50,12 +50,12 @@ var inputs = [
   ["What's the last ingredient", false],
   ["Give me the list of ingredients", true]
 ];
-testPhrases(inputs, wantsAllIngredients);
+testInputs(inputs, wantsAllIngredients);
 console.log("wantsAllIngredients() tests completed");
 
 
 // tests for wantsQuantity()
-console.log("... testing wantsQuantity()");
+console.log("\n... testing wantsQuantity()");
 inputs = [
   ["What are the ingredients", false],
   ["How many eggs", true],
@@ -63,8 +63,21 @@ inputs = [
   ["How many bananas", true],
   ["How long in the oven", false]
 ];
-testPhrases(inputs, wantsQuantity);
+testInputs(inputs, wantsQuantity);
 console.log("wantsQuantity() tests completed");
+
+
+// tests for wantsOneIngredient()
+console.log("\n... testing wantsOneIngredient()");
+inputs = [
+  ["How much green pepper do I need", false],
+  ["Do I fry the banana", true],
+  ["Chocolate on rice", false],
+  ["Rice on fries", false],
+  ["Steak with banana", true]
+];
+testInputs(inputs, wantsOneIngredient);
+console.log("wantsOneIngredient() tests completed");
 
 
 
@@ -79,7 +92,8 @@ Filters
   wantsAllIngredients - check if a user wants the list of ingredients
 
   @param  {string}  phrase      Input phrase
-  @return {boolean }            True if user wants the list of ingredients, false otherwise
+  @return {boolean }            True if user wants the list of all ingredients
+                                False otherwise
  */   
 function wantsAllIngredients(phrase){
   var s = nlp.pos(phrase).sentences[0];
@@ -87,7 +101,22 @@ function wantsAllIngredients(phrase){
   return (nounsFound.indexOf('ingredients') !== -1);
 };
 
+
+/**
+  wantsOneIngredient - check if a user wants any of the ingredients in recipe
+  
+  @param {string} phrase    Input phrase
+  @return {boolean}         True, if user input has ingredient that's in the recipe
+                            False, otherwise
+ */
 function wantsOneIngredient(phrase){
+  // var ingredients = getIngredients();
+  var ingredients = ["banana", "milk", "steak", "tartar sauce"];
+  for (var k = 0; k < ingredients.length; k++){
+    var item = ingredients[k];
+    if (isWordFound(phrase, item)) return true;
+  }
+  return false;  // recipe contains no ingredients uttered in phrase
 }
 
 function wantsNextInstruction(phrase){
