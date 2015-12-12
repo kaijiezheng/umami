@@ -4,7 +4,8 @@ angular.module('umami', [
   'umami.shorten',
   'umami.auth',
   'umami.recipe',
-  'ngRoute'
+  'ngRoute',
+  'angular-packery'
 ])
 .config(function ($routeProvider, $httpProvider) {
   $routeProvider
