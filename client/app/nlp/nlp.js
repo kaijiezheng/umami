@@ -1,3 +1,11 @@
+/**
+  To run simple tests on NLP filters below: 
+  
+  - Open browser
+  - Access this file as a static file from browser
+  
+ */
+
 
 var recipe = [
 '<article class="h-recipe">',
@@ -71,6 +79,19 @@ console.log("wantsQuantity() tests completed");
 console.log("\n... testing wantsOneIngredient()");
 inputs = [
   ["How much green pepper do I need", false],
+  ["Do I fry the banana", true],  // --- further refinement needed
+  ["Chocolate on rice", false],
+  ["Rice on fries", false],
+  ["Steak with banana", true]
+];
+testInputs(inputs, wantsOneIngredient);
+console.log("wantsOneIngredient() tests completed");
+
+
+// tests for wantsOneIngredient()
+console.log("\n... testing wantsOneIngredient()");
+inputs = [
+  ["How much green pepper do I need", false],
   ["Do I fry the banana", true],
   ["Chocolate on rice", false],
   ["Rice on fries", false],
@@ -79,6 +100,17 @@ inputs = [
 testInputs(inputs, wantsOneIngredient);
 console.log("wantsOneIngredient() tests completed");
 
+
+// tests for wantsNextInstruction()
+console.log("\n... testing wantsNextInstruction()");
+inputs = [
+  ["How much green pepper do I need", false],
+  ["What's next", true],
+  ["What do I do next", true],
+  ["I'm dong cutting, then what", false] // further refinement needed
+];
+testInputs(inputs, wantsNextInstruction);
+console.log("wantsNextInstruction() tests completed");
 
 
 /** 
@@ -120,7 +152,7 @@ function wantsOneIngredient(phrase){
 }
 
 function wantsNextInstruction(phrase){
-
+  return (isWordFound(phrase, "next"));
 }
 
 function wantsQuantity(phrase){
