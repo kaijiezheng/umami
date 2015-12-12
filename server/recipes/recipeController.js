@@ -31,9 +31,35 @@ module.exports = function(client) {
     addFavorite: function(req, res, next) {
       // add favorite recipe to user's account
     },
-    searchRecipes: function(req, res, next, query) {
-      // search recipe database based on search term
-      console.log(query);
+    searchRecipes: function(req, res, next) {
+      console.log('Searching for specific recipes');
+      var userQuery = req.path.split('/')[2];
+      client.search({
+        index: 'recipes',
+        type: 'recipe',
+        body: {
+          query: {
+            filtered: {
+              query: {
+                match: {
+                  // match the query agains all of
+                  // the fields in the posts index
+                  _all: userQuery
+                }
+              }
+            }
+          }
+        }
+      })
+      .then(function(response) {
+        console.log('Succesfully retrieved all recipes');
+        // Returns an array of hits
+        res.json(response.hits.hits);
+        next();
+      }, function(error) {
+        console.log('Error in retrieving all recipes', error.message);
+        next(error);
+      });
     }
   }
 };
