@@ -109,8 +109,8 @@ function wantsAllIngredients(phrase){
   @return {string}          Ingredient corresponding to input phrase, if user input has ingredient that's in the recipe
                             False, otherwise
  */
-function wantsOneIngredient(phrase){
-  var ingredients = getIngredients();
+function wantsOneIngredient(phrase, recipe){
+  var ingredients = recipe.getIngredients();
   // var ingredients = ["banana", "milk", "steak", "tartar sauce"];
   for (var k = 0; k < ingredients.length; k++){
     var item = ingredients[k];

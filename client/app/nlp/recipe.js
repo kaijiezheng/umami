@@ -27,10 +27,6 @@ var recipe = new Recipe(recipeObj);
 
 
 
-
-
-
-
 /**
 =======================================
   Class definition and methods
@@ -42,7 +38,6 @@ function Recipe(recipeObj){
   this.instructions = recipeObj.instructions.slice();
   this.nextInstructionIndex = 0;
 }
-
 
 Recipe.prototype.getIngredients = function(){
   return this.ingredients;
@@ -59,5 +54,6 @@ Recipe.prototype.getOneIngredient = function(keyword){
 };
 
 Recipe.prototype.getQuantity = function(ingredient) {
+  
+};
 
-}
