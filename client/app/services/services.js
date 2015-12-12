@@ -36,6 +36,11 @@ angular.module('umami.services', [])
     function getStorage() {
         return storage;
     }
+
+    return {
+      setStorage:setStorage,
+      getStorage:getStorage
+    }
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!

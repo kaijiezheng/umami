@@ -1,21 +1,9 @@
 angular.module('umami.recipe', ['ngRoute'])
 
-.controller('RecipeController', function ($scope) {
+.controller('RecipeController','searchResult', function ($scope, searchResult) {
   // Your code here
-  $scope.hello = "hello umami voice";
-  var recipe = {
-    name: 'Crêpes',
-    ingredients: [
-      '1 cup flour',
-      '1 egg',
-      '1/4 teaspoon salt',
-      '1 1/4 cup milk'],
-    instructions: [
-      'Mix',
-      'Cook'],
-    picUrl: "assets/chocolate.jpg"
-    currInstruction: 0;
-  };
+  $scope.hello = "hello umami";
+  var recipe = searchResult.getStorage();
   $scope.recipe = recipe;
 
   console.log(getIngredients());
@@ -51,16 +39,16 @@ angular.module('umami.recipe', ['ngRoute'])
 
   /**
     =======================================
-    Methods 
+    Methods
     =======================================
   */
 
 
 
-  
+
   /**
     =======================================
-    Filters 
+    Filters
     =======================================
   */
 
@@ -71,7 +59,7 @@ angular.module('umami.recipe', ['ngRoute'])
     @param  {string}  phrase      Input phrase
     @return {boolean }            True if user wants the list of all ingredients
                                   False otherwise
-   */   
+   */
   function wantsAllIngredients(phrase){
     var s = nlp.pos(phrase).sentences[0];
     var nounsFound = s.nouns().map(getText);
@@ -81,7 +69,7 @@ angular.module('umami.recipe', ['ngRoute'])
 
   /**
     wantsOneIngredient - check if a user wants any of the ingredients in recipe
-    
+
     @param {string} phrase    Input phrase
     @return {boolean}         True, if user input has ingredient that's in the recipe
                               False, otherwise
@@ -105,12 +93,12 @@ angular.module('umami.recipe', ['ngRoute'])
     return false;
   }
 
-  /** 
+  /**
   =======================================
     Helper functions
   =======================================
    */
-    
+
   function getText(obj){
     return obj.text;
   }
