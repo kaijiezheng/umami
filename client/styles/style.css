@@ -150,3 +150,47 @@ input[type=url]:focus {
 .creator .message {
   clear: both;
 }
+
+/*************************************
+test
+**************************************/
+
+* {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.module-container {
+  width: 100%;
+  border: 1px solid #d1d1d1;
+  /* clearfix */
+}
+.module-container .gutter-sizer {
+  width: 2%;
+  display: none;
+}
+.module-container .module-container:after {
+  content: ' ';
+  display: block;
+  clear: both;
+}
+.module-container .module, .module-container .module-sizer {
+  height: 200px;
+  width: 25%;
+  border: 1px solid #eaeaea;
+  background-color: #c4c4c4;
+}
+.module-container .module {
+  float: left;
+}
+.module-container .module.wide {
+  width: 50%;
+}
+.module-container .module:hover {
+  background-color: #bfbfbf;
+  cursor: pointer;
+}
+.module-container .module.is-dragging {
+  z-index: 2;
+}
