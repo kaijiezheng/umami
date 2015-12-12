@@ -6,48 +6,13 @@
   
  */
 
-
-var recipe = [
-'<article class="h-recipe">',
-'  <h1 class="p-name">Crêpe</h1>',
-'    <ul>',
-'      <li class="p-ingredient">1 cup flour</li>',
-'      <li class="p-ingredient">1/4 teaspoon salt</li>',
-'      <li class="p-ingredient">1 1/4 cup milk</li>',
-'    </ul>',
-'  <div class="e-instructions">',
-'    <ol>',
-'      <li>Mix</li>',
-'      <li>Cook</li>',
-'</ol>',
-'</div>',
-'</article>'
-].join(" ");
-
-
-
 /**
 =======================================
   Simple tests
 =======================================
  */
 
-console.log("Hello testing");
-
-var errorMsg = function(input, expected, result){
-  console.log("Testing " + input + " should be " + expected + ", but got " + result + " instead");
-}
-
-var testInputs = function(inputs, callback){
-  for (var k = 0; k < inputs.length; k++){
-    var phrase = inputs[k][0];
-    var expectedResult = inputs[k][1];
-    if (callback(phrase) !== expectedResult){
-      errorMsg(phrase, expectedResult, !expectedResult);
-    }
-  }
-};
-
+console.log("Hello testing - nlp");
 
 // tests for wantsAllIngredients()
 console.log("\n... testing wantsAllIngredients()");
@@ -113,9 +78,10 @@ testInputs(inputs, wantsNextInstruction);
 console.log("wantsNextInstruction() tests completed");
 
 
+
 /** 
 =======================================
-Filters
+  Filters
 =======================================
 */
 
@@ -136,19 +102,21 @@ function wantsAllIngredients(phrase){
 
 /**
   wantsOneIngredient - check if a user wants any of the ingredients in recipe
+  If found, return that ingredient
+  If not, return null
   
   @param {string} phrase    Input phrase
-  @return {boolean}         True, if user input has ingredient that's in the recipe
+  @return {string}          Ingredient corresponding to input phrase, if user input has ingredient that's in the recipe
                             False, otherwise
  */
 function wantsOneIngredient(phrase){
-  // var ingredients = getIngredients();
-  var ingredients = ["banana", "milk", "steak", "tartar sauce"];
+  var ingredients = getIngredients();
+  // var ingredients = ["banana", "milk", "steak", "tartar sauce"];
   for (var k = 0; k < ingredients.length; k++){
     var item = ingredients[k];
     if (isWordFound(phrase, item)) return true;
   }
-  return false;  // recipe contains no ingredients uttered in phrase
+  return null;  // recipe contains no ingredients uttered in phrase
 }
 
 function wantsNextInstruction(phrase){
