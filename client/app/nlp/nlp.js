@@ -30,46 +30,41 @@ var errorMsg = function(input, expected, result){
   console.log("Testing " + input + " should be " + expected + ", but got " + result + " instead");
 }
 
+var testPhrases = function(inputs, callback){
+  for (var k = 0; k < inputs.length; k++){
+    var phrase = inputs[k][0];
+    var expectedResult = inputs[k][1];
+    if (callback(phrase) !== expectedResult){
+      errorMsg(phrase, expectedResult, !expectedResult);
+    }
+  }
+};
+
 
 // tests for wantsAllIngredients()
-if (wantsAllIngredients("What are the ingredients") === false){
-  errorMsg('true', 'false');
-}
-if (wantsAllIngredients("How much salt and pepper do I need") === true){
-  errorMsg('false', 'true');
-}
-if (wantsAllIngredients("What are the ingredients") === false){
-  errorMsg('true', 'false');
-}
-if (wantsAllIngredients("How many carrots") === true){
-  errorMsg('false', 'true');
-}
-if (wantsAllIngredients("What's the last ingredient") === true){
-  errorMsg('false', 'true');
-}
-if (wantsAllIngredients("Give me the list of ingredients") === false){
-  errorMsg('true', 'false');
-}
-console.log("wantsAllIngredients() tests passed");
+console.log("... testing wantsAllIngredients()");
+var inputs = [
+  ["What are the ingredients", true],
+  ["How much salt and pepper do I need", false],
+  ["How many carrots", false],
+  ["What's the last ingredient", false],
+  ["Give me the list of ingredients", true]
+];
+testPhrases(inputs, wantsAllIngredients);
+console.log("wantsAllIngredients() tests completed");
 
 
 // tests for wantsQuantity()
-if (wantsQuantity("What are the ingredients") === true){
-  errorMsg('false', 'true');
-}
-if (wantsQuantity("How many eggs") === false){
-  errorMsg('true', 'false');
-}
-if (wantsQuantity("How much water") === false){
-  errorMsg('true', 'false');
-}
-if (wantsQuantity("How many bananas") === false){
-  errorMsg('true', 'false');
-}
-if (wantsQuantity("How long in the oven") === true){
-  errorMsg('false', 'true');
-}
-console.log("wantsQuantity() tests passed");
+console.log("... testing wantsQuantity()");
+inputs = [
+  ["What are the ingredients", false],
+  ["How many eggs", true],
+  ["How much water", true],
+  ["How many bananas", true],
+  ["How long in the oven", false]
+];
+testPhrases(inputs, wantsQuantity);
+console.log("wantsQuantity() tests completed");
 
 
 
@@ -100,11 +95,9 @@ function wantsNextInstruction(phrase){
 }
 
 function wantsQuantity(phrase){
-  var tokenObjs = nlp.tokenize(phrase);
-  var tokens = tokenObjs[0].tokens.map(getText);
-  var isManyWord = tokens.indexOf('many' !== -1);
-  var isMuchWord = tokens.indexOf('much' !== -1);
-  return (isManyWord || isMuchWord);
+  if (isWordFound(phrase, "many")) return true;
+  if (isWordFound(phrase, "much")) return true;
+  return false;
 }
 
 function wantsOneInstruction(phrase){
@@ -122,4 +115,8 @@ function getText(obj){
   return obj.text;
 }
 
-
+function isWordFound(phrase, word){
+  var tokenObjs = nlp.tokenize(phrase);
+  var tokens = tokenObjs[0].tokens.map(getText);
+  return (tokens.indexOf(word) !== -1);
+}
