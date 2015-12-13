@@ -60,10 +60,6 @@ h1 {
   min-height: 50px;
 }
 
-.link:hover {
-  background-color: #efe;
-}
-
 .link img {
   float: left;
   margin: 0 5px;
