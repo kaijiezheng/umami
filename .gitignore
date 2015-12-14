@@ -38,3 +38,5 @@ mean.iml
 /app/components
 .idea/
 
+/server/elasticSearchDb
+
