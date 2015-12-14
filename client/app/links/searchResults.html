@@ -1,10 +1,5 @@
-<div class='ui container'>
   <!-- Your html here -->
-  <div class="ui icon big action input">
-    <input type="text" ng-model="searchText" placeholder="Search...">
-    <button class="ui button" ng-click="search()">Search</button>
-  </div>
-  <div class="ui horizontal divider">
+   <div class="ui horizontal divider">
     Search Results
   </div>
 
@@ -20,8 +15,32 @@
   <!--</div>-->
 
 
-  <div class="ui link relaxed divided items">
-    <div ng-click="goRecipe(recipe)" class="item" ng-repeat="recipe in recipes track by $index">
+    <div class="row" ng-click="goRecipe(recipe)" class="item" ng-repeat="recipe in recipes track by $index" ng-switch on="$index % 3">
+      <div class="col-md-4">
+        <div ng-switch-when="0" class="foodPicLink">
+          <a href="#">
+            <img class="foodPic img-responsive" ng-src="{{recipes[$index].image || assets/Recipesfallback.png}}"
+           onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image"></a>
+            <span class="text-content food"><span>{{recipes[$index].name}}</span></span>
+        </div>
+      </div>
+      <div class="col-md-4" ng-show="recipes[$index+1]">
+       <div ng-switch-when="0">
+         <img class="foodPic img-responsive" ng-src="{{recipes[$index + 1].image || assets/Recipesfallback.png}}"
+           onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">
+            <span class="text-content"><span>{{recipes[$index + 1].name}}</span></span>
+        </div>
+      </div>    
+      <div class="col-md-4" ng-show="recipes[$index+2]">    
+        <div ng-switch-when="0">
+          <img class="foodPic img-responsive" ng-src="{{recipes[$index + 2].image || assets/Recipesfallback.png}}"
+         onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image"> 
+          <span class="text-content"><span>{{recipes[$index + 2].name}}</span></span>
+      </div>
+      </div>
+    </div>
+
+ <!--    <div ng-click="goRecipe(recipe)" class="item" ng-repeat="recipe in recipes track by $index">
       <div class="image">
         <img class="foodPic" ng-src="{{recipe.image || assets/Recipesfallback.png}}"
              onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">
@@ -38,5 +57,5 @@
       </div>
       <div class="ui section divider"></div>
     </div>
-  </div>
 </div>
+-->
