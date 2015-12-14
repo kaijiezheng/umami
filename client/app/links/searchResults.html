@@ -1,18 +1,18 @@
-  <!-- Your html here -->
-   <div class="ui horizontal divider">
-    Search Results
-  </div>
+<!-- Your html here -->
+<div class="ui horizontal divider">
+  Search Results
+</div>
 
-  <!--this is the code for packery. currently not working. to be debugged for the next iteration-->
-  <!--<div class="module-container" workspace>-->
-  <!--&lt;!&ndash; sizers &ndash;&gt;-->
-  <!--&lt;!&ndash;<div class="module-sizer"></div>&ndash;&gt;-->
-  <!--&lt;!&ndash;<div class="gutter-sizer"></div>&ndash;&gt;-->
-  <!--{{recipes}}-->
-  <!--<div ng-repeat="recipe in recipes track by $index | orderBy:'datePublished'">-->
-  <!--<img class="module" ng-class="{'wide': $index%4 === 0}" ng-src="{{recipe.image}}}" onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">-->
-  <!--</div>-->
-  <!--</div>-->
+<!--this is the code for packery. currently not working. to be debugged for the next iteration-->
+<!--<div class="module-container" workspace>-->
+<!--&lt;!&ndash; sizers &ndash;&gt;-->
+<!--&lt;!&ndash;<div class="module-sizer"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="gutter-sizer"></div>&ndash;&gt;-->
+<!--{{recipes}}-->
+<!--<div ng-repeat="recipe in recipes track by $index | orderBy:'datePublished'">-->
+<!--<img class="module" ng-class="{'wide': $index%4 === 0}" ng-src="{{recipe.image}}}" onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">-->
+<!--</div>-->
+<!--</div>-->
 
     <div class="row" class="item" ng-repeat="recipe in recipes track by $index" ng-switch on="$index % 3">
 
@@ -34,33 +34,54 @@
         </div>
       </div>
 
-      <div class="col-md-4" ng-show="recipes[$index + 2]">    
+      <div class="col-md-4" ng-show="recipes[$index + 2]">
         <div ng-switch-when="0" class="foodPicLink">
           <a href="#" ng-click="goRecipe(recipe)">
           <img class="foodPic img-responsive" ng-src="{{recipes[$index + 2].image || assets/Recipesfallback.png}}"
-         onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image"> 
+         onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">
           <span class="text-content food"><span>{{recipes[$index + 2].name}}</span></span>
         </div>
       </div>
 
-    </div>
 
- <!--    <div ng-click="goRecipe(recipe)" class="item" ng-repeat="recipe in recipes track by $index">
-      <div class="image">
-        <img class="foodPic" ng-src="{{recipe.image || assets/Recipesfallback.png}}"
-             onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">
-      </div>
-      <div class="content">
-        <div class="header">{{ recipe.name }}</div>
-        <div class="meta">
-          <span>Description</span>
-        </div>
-        <div class="description"><p>{{ recipe.description }}</p></div>
-        <div class="extra">Cook Time: {{ recipe.cookTime.replace("PT", "").replace('M', 'Min') }} Prep Time: {{
-          recipe.prepTime.replace("PT", "").replace('M', 'Min') }}
-        </div>
-      </div>
-      <div class="ui section divider"></div>
     </div>
+  </div>
+  <div class="col-md-4 col-lg-4" ng-show="recipes[$index+1]">
+    <div>
+      <a href="#" ng-click="goRecipe(recipes[$index+1])">
+        {{$index+1}}
+        <img class="foodPic img-responsive" ng-src="{{recipes[$index + 1].image || assets/Recipesfallback.png}}" alt="food image">
+      </a>
+      <span class="text-content"><span>{{recipes[$index + 1].name}}</span></span>
+    </div>
+  </div>
+  <div class="col-md-4 col-lg-4" ng-show="recipes[$index+2]">
+    <div ng-switch-when="0">
+      <a href="#" ng-click="goRecipe(recipes[$index+2])">
+        {{$index+2}}
+        <img class="foodPic img-responsive" ng-src="{{recipes[$index + 2].image || assets/Recipesfallback.png}}" alt="food image">
+      </a>
+      <span class="text-content"><span>{{recipes[$index + 2].name}}</span></span>
+    </div>
+  </div>
+</div>
+
+<!--    <div ng-click="goRecipe(recipe)" class="item" ng-repeat="recipe in recipes track by $index">
+     <div class="image">
+       <img class="foodPic" ng-src="{{recipe.image || assets/Recipesfallback.png}}"
+            onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">
+     </div>
+     <div class="content">
+       <div class="header">{{ recipe.name }}</div>
+       <div class="meta">
+         <span>Description</span>
+       </div>
+       <div class="description"><p>{{ recipe.description }}</p></div>
+       <div class="extra">Cook Time: {{ recipe.cookTime.replace("PT", "").replace('M', 'Min') }} Prep Time: {{
+         recipe.prepTime.replace("PT", "").replace('M', 'Min') }}
+       </div>
+     </div>
+     <div class="ui section divider"></div>
+   </div>
 </div>
 -->
