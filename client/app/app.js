@@ -4,6 +4,7 @@ angular.module('umami', [
   'umami.shorten',
   'umami.auth',
   'umami.recipe',
+  "nlpCompromise",
   'ngRoute'
 ])
 .config(function ($routeProvider, $httpProvider) {
@@ -20,17 +21,17 @@ angular.module('umami', [
 
     .when('/search', {
       templateUrl: 'app/links/searchResults.html',
-      controller: 'LinksController',
+      controller: 'LinksController'
       //authenticate: true
     })
     .when('/shorten', {
       templateUrl: 'app/shorten/recipeDisplay.html',
-      controller: 'ShortenController',
+      controller: 'ShortenController'
       //authenticate: true
     })
     .when('/recipe', {
       templateUrl: 'app/recipe/recipe.html',
-      controller: 'RecipeController',
+      controller: 'RecipeController'
     })
     .otherwise({
       redirectTo: '/search'
