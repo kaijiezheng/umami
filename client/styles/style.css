@@ -40,9 +40,9 @@ h1 {
   text-align: center;
 }
 
-.navigation li a:hover {
+/*.navigation li a:hover {
   background-color: #ddd;
-}
+}*/
 
 .navigation li a.selected {
   background-color: #ccc;
