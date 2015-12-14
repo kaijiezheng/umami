@@ -1,56 +1,55 @@
 <!DOCTYPE html>
 <html ng-app='umami'>
-  <head>
-    <meta charset="utf-8" />
-    <title>Welcome to Umami</title>
-    <link rel="stylesheet" type="text/css" href="lib/semantic/dist/semantic.min.css" />
-    <link rel="stylesheet" type="text/css" href="styles/style.css" />
-  </head>
-  <body>
-    <div class="ui attached stackable inverted menu">
-      <h1 class="header item">Umami</h1>
+<head>
+  <meta charset="utf-8" />
+  <title>Welcome to Umami</title>
+  <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+  <link rel="stylesheet" type="text/css" href="styles/style.css" />
+</head>
 
-      <div class="ui container">
-        <a class="item" href = "/#/recipe">
-          <i class="home icon"></i> Recipe
-        </a>
-        <a class="item" href="/#/search">
-          <i class="grid layout icon"></i> Search Results
-        </a>
-        <div class="ui simple dropdown item">
-          More
-          <i class="dropdown icon"></i>
-          <div class="menu">
-            <a class="item"><i class="edit icon"></i> Edit Profile</a>
-            <a class="item"><i class="globe icon"></i> Choose Language</a>
-            <a class="item"><i class="settings icon"></i> Account Settings</a>
-          </div>
-        </div>
-        <div class="right item">
-          <div class="ui input"><input type="text" placeholder="Search..."></div>
-          <a class="item"><i class="edit icon"></i> Sign In..</a>
-          <a class="item"><i class="edit icon"></i> Sign Up</a>
+<body>
+  <div class="ui attached stackable menu container">
+    <div class="row nav">
+      <div class="col-md-4">
+        <h1 class="brand"><i class="fa fa-spoon brand"></i> umami</h1>
+      </div>
+      <div class="col-md-4 nav-mid"> 
+        <div class="input-group">
+          <input type="text" class="form-control" placeholder="Search recipes">
+          <span class="input-group-btn">
+          <button type="submit" class="btn btn-default">
+          <i class="fa fa-search search"></i>
+          </button>
         </div>
       </div>
+      <div class="col-md-4 right-header nav-right">
+       <input class="btn btn-default btn-signup" type="submit" value="Sign Up">
+        <input class="btn btn-default btn-signin" type="submit" value="Sign In">
+      </div>      
     </div>
+    <div class="row">
+      <div ng-view></div>
+    </div>
+    <div class="row footer">
+      <div class="col-md-12">&copy; 2015 Honey Badger</div>
+    </div>
+  </div>
 
-    <!-- the ng-view directive is where our templates will be loaded into when naviagted to -->
-    <div ng-view></div>
+  <script src="lib/jquery/dist/jquery.min.js"></script>
+  <script src="lib/angular/angular.js"></script>
+  <script src="lib/angular-route/angular-route.js"></script>
+  <script src="lib/angular-nlp-compromise/dist/angular-nlp-compromise.min.js"></script>
+  <script src="lib/packery/dist/packery.pkgd.js"></script>
+  <script src="lib/draggabilly/dist/draggabilly.pkgd.min.js"></script>
 
-    <script src="lib/jquery/dist/jquery.min.js"></script>
-    <script src="lib/semantic/dist/semantic.min.js"></script>
-    <script src="lib/angular/angular.js"></script>
-    <script src="lib/draggabilly/dist/draggabilly.pkgd.min.js"></script>
-    <script src="lib/angular-nlp-compromise/dist/angular-nlp-compromise.min.js"></script>
-    <script src="lib/packery/dist/packery.pkgd.js"></script>
-    <script src="lib/angular-route/angular-route.js"></script>
 
-    <script src="app/auth/auth.js"></script>
-    <script src="app/links/searchResults.js"></script>
-    <script src="app/shorten/recipeDisplay.js"></script>
-    <script src="app/services/services.js"></script>
-    <script src="app/testdata.js"></script>
-    <script src="app/recipe/recipeController.js"></script>
-    <script src="app/app.js"></script>
-  </body>
+  <script src="app/auth/auth.js"></script>
+  <script src="app/links/searchResults.js"></script>
+  <script src="app/shorten/recipeDisplay.js"></script>
+  <script src="app/services/services.js"></script>
+  <script src="app/testdata.js"></script>
+  <script src="app/recipe/recipeController.js"></script>
+  <script src="app/app.js"></script>
+</body>
 </html>
