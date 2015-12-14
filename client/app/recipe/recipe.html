@@ -5,7 +5,7 @@
 <!--<div class="ui huge header">{{hello}}</div>-->
 <div class="ui vertically divided relaxed grid container">
   <div class="six wide column">
-    <img ng-src="{{recipe.picUrl}}" alt="">
+    <img ng-src="{{recipe.image}}" alt="">
   </div>
   <div class="ten wide column">
     <h1 class="p-name">{{recipe.name}}</h1>
@@ -52,32 +52,8 @@
       <div class="ui list">
         <div class="item" ng-repeat="ingredient in recipe.ingredients">{{ingredient}}</div>
       </div>
-      <div class="ui ordered list">
-        <!--<li ng-repeat="instruction in recipe.instructions">{{instruction}}</li>-->
-        <div class="item">Pudding cheesecake chocolate dessert chocolate cake chocolate bar.
-          Dragée ice cream chocolate bar. Cake candy canes sweet roll chocolate.
-          Apple pie oat cake bear claw soufflé icing halvah chocolate cake.
-          Chocolate bar marshmallow apple pie jujubes lemon drops pie candy canes.
-          Lollipop oat cake pie pudding. Cake chupa chups pudding wafer sugar plum caramels bonbon halvah.
-        </div>
-        <div class="item">Apple pie pie pastry. Muffin topping marshmallow sweet marshmallow. Toffee icing cookie
-          cake. Lollipop chocolate cookie sesame snaps. Halvah croissant carrot cake. Caramels tart lemon drops
-          soufflé candy canes. Halvah cake croissant tootsie roll. Croissant cookie candy marzipan sugar plum jelly-o
-          bonbon. Bonbon cotton candy jelly soufflé bear claw jelly-o chocolate cake.
-        </div>
-        <div class="item">Dragée bonbon oat cake candy. Pie cookie pie. Jelly beans wafer sweet carrot cake danish
-          donut brownie ice cream croissant. Bear claw danish gingerbread chocolate sesame snaps apple pie muffin
-          pudding. Jelly pastry macaroon cake chocolate ice cream jelly beans icing. Cake lollipop danish toffee
-          tootsie roll pudding bear claw topping. Brownie candy canes apple pie donut sweet roll caramels croissant
-          marzipan candy canes. Icing jelly dragée toffee cookie gummi bears biscuit icing. Bonbon bonbon chocolate
-          bar.
-        </div>
-        <div class="item">Marshmallow chocolate cake sweet roll pastry. Tart chupa chups pudding cookie powder.
-          Chocolate bar cookie sweet. Sweet brownie muffin croissant macaroon chocolate cake lollipop. Dessert soufflé
-          jelly beans cake cake. Cotton candy halvah powder dragée icing icing liquorice toffee powder. Dessert
-          soufflé macaroon gummies biscuit marzipan pie croissant candy. Gummi bears bonbon sweet roll brownie pastry
-          candy gummi bears ice cream danish. Marshmallow dragée powder gummi bears tiramisu biscuit muffin.
-        </div>
+      <div ng-repeat="instruction in instructions" class="ui ordered list">
+        <div class="item">{{instruction}}</div>
 
       </div>
     </div>
