@@ -1,19 +1,31 @@
 angular.module('umami.recipe', ['ngRoute'])
 
-.controller('RecipeController','searchResult', function ($scope, searchResult) {
+.controller('RecipeController',['$scope','searchResult','nlp', function ($scope, searchResult,nlp) {
   // Your code here
   $scope.hello = "hello umami";
-  var recipe = searchResult.getStorage();
+  //var recipe = searchResult.getStorage();
+  var recipe = {
+    "id": "5160757596cc6207aada322f",
+    "name": "Spinach and Kamut Salad with Chili-Orange Dressing",
+    "source": "naturallyella",
+    "url": "http://naturallyella.com/2013/03/18/spinach-and-kamut-salad-with-chili-orange-dressing/",
+    "recipeYield": "2",
+    "ingredients": ["3-4 handfuls spinach", "½ cup kamut, uncooked", "¼ cup sunflower seeds", "2 ounces feta", "½ cup fresh squeezed orange juice (app. 2 oranges)", "¼ cup walnut oil", "2 tablespoons honey", "¼-1/2 teaspoon red chili flakes"],
+    "prepTime": "PT15M",
+    "cookTime": "PT60M",
+    "datePublished": "2013-03-18T07:36:07+00:00",
+    "description": "Recently, there have been moments that catch me off my emotional guard. I'll be standing in my parents living room, thinking about my childhood/early adulth"
+  };
   $scope.recipe = recipe;
 
-  console.log(getIngredients());
+  console.log(recipe);
 
   // test text-to-speech
   var u = new SpeechSynthesisUtterance();
   u.text = 'Speech recognition is working';
   u.lang = 'en-US';
-  speechSynthesis.speak(u);
-
+  //speechSynthesis.speak(u);
+  console.log("getIngredients() = ", getIngredients());
   var recognizer = new webkitSpeechRecognition();
   recognizer.continuous = true;
   recognizer.lang = "en";
@@ -23,13 +35,14 @@ angular.module('umami.recipe', ['ngRoute'])
       if(result.isFinal) {
         console.log('showing text ... soon'); // check progress
         var inputText = result[0].transcript;
-        console.log(inputText);   // check speech-to-text result
+        console.log("you said", inputText);   // check speech-to-text result
         u.text = inputText;
-        speechSynthesis.speak(u);
-        if (wantsIngredients(inputText)){
-          var ingredients = getIngredients();
-          console.log('ingredients = ' + ingredients);  // simple check
-          u.text = 'The ingredients are ' + ingredients;
+        var foundIngredient = wantsOneIngredient(inputText);
+        console.log(foundIngredient)
+        if (foundIngredient!== false){
+          console.log('ingredient = ' + foundIngredient);  // simple check
+          u.text = 'The ingredients are ' + foundIngredient.join(' ');
+          console.log("u.text = ", u.text);
           speechSynthesis.speak(u);
         }
       }
@@ -43,7 +56,10 @@ angular.module('umami.recipe', ['ngRoute'])
     =======================================
   */
 
+  function getIngredients() {
 
+    return $scope.recipe.ingredients.map(item => item.split(' '));
+  }
 
 
   /**
@@ -78,7 +94,10 @@ angular.module('umami.recipe', ['ngRoute'])
     var ingredients = getIngredients();
     for (var k = 0; k < ingredients.length; k++){
       var item = ingredients[k];
-      if (isWordFound(phrase, item)) return true;
+      for (var i = 0, len = item.length; i < len; i++) {
+        var word = item[i];
+        if (isWordFound(phrase, word)) return item;
+      }
     }
     return false;  // recipe contains no ingredients uttered in phrase
   }
@@ -99,15 +118,13 @@ angular.module('umami.recipe', ['ngRoute'])
   =======================================
    */
 
-  function getText(obj){
-    return obj.text;
-  }
-
   function isWordFound(phrase, word){
     var tokenObjs = nlp.tokenize(phrase);
-    var tokens = tokenObjs[0].tokens.map(getText);
+    //console.log("tokenObjs = ", tokenObjs);
+    var tokens = tokenObjs[0].tokens.map(obj => obj.text);
+    //console.log("tokens = ", tokens);
     return (tokens.indexOf(word) !== -1);
   }
 
 
-});
+}]);

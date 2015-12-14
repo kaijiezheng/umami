@@ -21,6 +21,7 @@
     "holderjs": "~2.9.0",
     "packery": "~1.4.3",
     "draggabilly": "~1.2.4",
-    "angular-packery": "~1.0.4"
+    "angular-packery": "~1.0.4",
+    "angular-nlp-compromise": "~1.1.0"
   }
 }
