@@ -40,9 +40,9 @@ h1 {
   text-align: center;
 }
 
-.navigation li a:hover {
+/*.navigation li a:hover {
   background-color: #ddd;
-}
+}*/
 
 .navigation li a.selected {
   background-color: #ccc;
@@ -58,10 +58,6 @@ h1 {
   margin-bottom: 5px;
   padding: 5px;
   min-height: 50px;
-}
-
-.link:hover {
-  background-color: #efe;
 }
 
 .link img {
