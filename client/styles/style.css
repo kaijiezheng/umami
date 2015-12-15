@@ -20,12 +20,16 @@ i.search {
 .nav {
   margin: 1.5em 0 2.5em 0;
 }
+.nav-left {
+  padding-left:0;
+}
 .nav-mid {
   margin-top: 2em;
 }
 
 .nav-right {
   margin-top: 2em;
+  padding-right: 0;
 }
 .footer {
   margin: 3em 0;
@@ -226,3 +230,10 @@ figure.effect-julia:hover p {
 img.related {
 }
 
+img.recipe {
+  border: solid 1px #eee;
+}
+div.related, div.instructions {
+  margin-left: 0;
+  margin-right: 0;
+}
