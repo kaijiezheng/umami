@@ -2,7 +2,15 @@
   <div class="col-md-5">
     <img class="img-responsive recipe" ng-src="http://assets.epicurious.com/photos/54b2f6e83edeef84363b52cf/6:4/w_620%2Ch_413/364092_chocolate-pudding_1x1.jpg" alt="">
   </div>
-  <div class="col-md-7">
+  <div class="col-md-7 summary">
+    <h3>{{recipe.name}}</h3>
+    <table>
+      <tr>
+        <td><p class="head">Ingredients</p><p class="body">6</p><p class="footer">counts</p></td>
+        <td><p class="head">Time</p><p class="body">25</p><p class="footer">minutes<p></td>
+        <td><p class="head">Ratings</p><p class="body">4.5</p><p class="footer">168 reviews</p></td>
+      </tr>
+    </table>
   </div>
 </div>
 <div class="row related">
