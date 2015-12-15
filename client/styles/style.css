@@ -21,7 +21,6 @@ i.search {
   margin: 1.5em 0 2.5em 0;
 }
 .nav-left {
-  padding-left:0;
 }
 .nav-mid {
   margin-top: 2em;
@@ -29,14 +28,13 @@ i.search {
 
 .nav-right {
   margin-top: 2em;
-  padding-right: 0;
 }
 .footer {
   margin: 3em 0;
   text-align: center;
   color: #999;
 }
-span.text-content {
+/*span.text-content {
   background: rgba(0, 0, 0, 0.5);
   color: white;
   cursor: pointer;
@@ -55,7 +53,7 @@ span.text-content {
 }
 .foodPicLink:hover span.text-content {
   opacity: 1;
-}
+}*/
 
 
 /* hover effects ***************************/
@@ -223,12 +221,22 @@ figure.effect-julia:hover p {
   transform: translate3d(0,0,0);
 }
 
-.row .related {
+
+/* single recipe page */
+.sidebar {
+
+}
+/*.row .related {
   max-height: 75px;
+}
+*/
+div.summary {
+  margin-left: -15px;
 }
 div.summary h3 {
   margin-top: 0;
 }
+/*
 div.related{
   margin: 1em 0 0 0;
 }
@@ -237,11 +245,11 @@ div.instructions {
 }
 .summary td {
   padding: 1em;
-}
+}*/
 
 
 /* Summary section */
-.summary td {
+/*.summary td {
   padding-right: 2em;
 }
 p.head {
@@ -264,4 +272,4 @@ p.footer {
 .summary table td{
   border: solid 1px red;
   padding: 0;
-}
+}*/
