@@ -1,8 +1,20 @@
 angular.module('umami.recipe', ['ngRoute'])
 
   .controller('RecipeController', ['$scope', 'searchResult', 'nlp', function ($scope, searchResult, nlp) {
-    // Your code here
-    $scope.hello = "hello umami";
+    var currentStep = 0;
+    var instructionKeywords={
+      next:function(){
+        return currentStep < $scope.recipe.instructions.length ? $scope.recipe.instructions[++currentStep] : "you are at the end";
+      },
+      previous:function(){
+        return currentStep > 0 ?$scope.recipe.instructions[--currentStep] : "you are at the beginning";
+      },
+      repeat: function () {
+        return $scope.recipe.instructions[currentStep]
+      }
+    };
+    var parsing = false;
+
     var recipe = searchResult.getStorage() || {
       "id": "5160d4f896cc620d188cb475",
       "name": "Lemon and Fresh Herb Tabbouleh",
@@ -18,6 +30,7 @@ angular.module('umami.recipe', ['ngRoute'])
     $scope.recipe = recipe;
 
     console.log(recipe);
+    var prevLength;
 
     // test text-to-speech
     var u = new SpeechSynthesisUtterance();
@@ -27,44 +40,74 @@ angular.module('umami.recipe', ['ngRoute'])
     console.log("getIngredients() = ", getIngredients());
     var recognizer = new webkitSpeechRecognition();
     recognizer.continuous = true;
+    recognizer.interimResults = true;
     recognizer.lang = "en";
+    recognizer.onend = function (){
+      speechSynthesis.speak(u);
+      prevLength = 0;
+      console.log('ended')
+    };
+    u.onend = function () {
+      console.log('i"m done talking!')
+      parsing = false;
+      recognizer.start();
+    };
     recognizer.onresult = function (event) {
       if (event.results.length > 0) {
-        var result = event.results[event.results.length - 1];
+        var result = event.results[event.resultIndex];
         if (result.isFinal) {
           console.log('showing text ... soon'); // check progress
           var inputText = result[0].transcript;
           console.log("you said", inputText);   // check speech-to-text result
-          u.text = inputText;
-          var foundIngredient = wantsOneIngredient(inputText);
-          console.log(foundIngredient)
-          if (foundIngredient !== false) {
-            console.log('ingredient = ' + foundIngredient);  // simple check
-            u.text = 'The ingredients are ' + foundIngredient.join(' ');
-            console.log("u.text = ", u.text);
-            speechSynthesis.speak(u);
+          handlePhrase(tokenize(inputText));
+        } else {
+          var tokens = tokens || {};
+          prevLength = prevLength || 0;
+          var tempTranscript = event.results[0][0].transcript;
+          if(tempTranscript.length > 50 && !parsing){
+            parsing = true;
+            console.log(tempTranscript);
+
+            handlePhrase(tokenize(tempTranscript, tokens));
+          } else if(!parsing){
+            handlePhrase(tokenize(tempTranscript.slice(prevLength), tokens))
+            prevLength = tempTranscript.length;
           }
+          //console.log(event.result[event.result.length-1][0].transcript)
         }
+
       }
     };
-    recognizer.start();
 
-    /**
-     =======================================
-     Methods
-     =======================================
-     */
+
+    function tokenize(inputText, existingTokens) {
+      existingTokens = existingTokens || {};
+      var tokenizedPhrase = nlp.tokenize(inputText);
+      var tokens = tokenizedPhrase[0].tokens.reduce((agg, next) => {
+          if(agg[next.text]){
+        agg[next.text]++;
+      }else{
+        agg[next.text] = 1;
+      }
+      return agg;
+    }, existingTokens);
+      return tokens;
+    }
+
+    $scope.startRecord= function() {
+      console.log('starting Record');
+      recognizer.start();
+    };
+    $scope.stopRecord= function() {
+      console.log('starting Record');
+      recognizer.stop();
+    };
+
+
 
     function getIngredients() {
       return $scope.recipe.ingredients.map(item => item.split(' '));
     }
-
-
-    /**
-     =======================================
-     Filters
-     =======================================
-     */
 
 
     /**
@@ -100,15 +143,26 @@ angular.module('umami.recipe', ['ngRoute'])
       return false;  // recipe contains no ingredients uttered in phrase
     }
 
-    function wantsNextInstruction(phrase) {
-      return (isWordFound(phrase, "next"));
+    function handlePhrase(tokens){
+      console.log(tokens)
+      Object.keys(instructionKeywords).forEach(item => {
+        if (item in tokens){
+        u.text = instructionKeywords[item]();
+        console.log(u.text)
+        recognizer.stop();
+      } else {
+        var foundIngredient = wantsOneIngredient(tokens);
+        if (foundIngredient) {
+          console.log('ingredient = ' + foundIngredient);  // simple check
+          u.text = 'The ingredients are ' + foundIngredient.join(' ');
+          recognizer.stop();
+        }
+      }
+    })
     }
 
-    function wantsQuantity(phrase) {
-      if (isWordFound(phrase, "many")) return true;
-      if (isWordFound(phrase, "much")) return true;
-      return false;
-    }
+
+
 
     /**
      =======================================
@@ -116,12 +170,8 @@ angular.module('umami.recipe', ['ngRoute'])
      =======================================
      */
 
-    function isWordFound(phrase, word) {
-      var tokenObjs = nlp.tokenize(phrase);
-      //console.log("tokenObjs = ", tokenObjs);
-      var tokens = tokenObjs[0].tokens.map(obj => obj.text);
-      //console.log("tokens = ", tokens);
-      return (tokens.indexOf(word) !== -1);
+    function isWordFound(tokenizedPhrase, word) {
+      return (word in tokenizedPhrase);
     }
 
 

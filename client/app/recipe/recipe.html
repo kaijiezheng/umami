@@ -14,6 +14,7 @@
       <div class="col-md-1">
         <p class="head">Ratings</p><p class="body">4.5</p><p class="foot"><a href="#">168 reviews</a>
       </div> -->
+    <button class="btn" ng-click="startRecord()">Record</button>
       <table>
         <tr>
           <td><!-- <p class="head">Ratings</p> --><p class="body">4.5</p><p class="foot"><a href="#">168 reviews</a></p></td>
@@ -31,7 +32,7 @@
         <li class="item" ng-repeat="ingredient in recipe.ingredients">{{ingredient}}</li>
       </ul>
     </div>
-    <div class="col-md-5">    
+    <div class="col-md-5">
       <h3>Directions</h3>
       <ol>
         <li ng-repeat="instruction in recipe.instructions" class="ui ordered list">{{instruction}}</li>
@@ -42,10 +43,10 @@
 
 
 <div class="col-md-2 sidebar">
-  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/56098f336a59cdb91b5f7912/6:4/w_620%2Ch_413/363375_hires.jpg">     
-  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b33f6b460b4423363f21ca/6:4/w_620%2Ch_413/359369_arugula-fennel-apricot-salad_1x1.jpg">     
+  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/56098f336a59cdb91b5f7912/6:4/w_620%2Ch_413/363375_hires.jpg">
+  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b33f6b460b4423363f21ca/6:4/w_620%2Ch_413/359369_arugula-fennel-apricot-salad_1x1.jpg">
   <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b313063edeef84363b9b77/6:4/w_620%2Ch_413/359355_stuffed-chicken-breasts_1x1.jpg">
-  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/5609a79862fa7a9917c25b34/6:4/w_620%2Ch_413/356338_hires.jpg">     
+  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/5609a79862fa7a9917c25b34/6:4/w_620%2Ch_413/356338_hires.jpg">
   <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/561435e8f35fab51707e97fb/6:4/w_620%2Ch_413/354269_hires.jpg">
   <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/5609a4cae0acd286555db6a6/6:4/w_620%2Ch_413/351253_hires.jpg">
   <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b297f4a801766f773fbe28/6:4/w_620%2Ch_413/367759_lemon-zest-butter_1x1.jpg">

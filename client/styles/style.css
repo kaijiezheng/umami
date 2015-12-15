@@ -51,8 +51,8 @@ i.search {
   float: left;
   overflow: hidden;
   margin: 10px 1%;
-  min-width: 320px;
-  max-width: 480px;
+  min-width: 240px;
+  max-width: 320px;
   max-height: 360px;
   width: 48%;
   height: auto;
@@ -66,7 +66,7 @@ i.search {
   display: block;
   min-height: 100%;
   max-width: 100%;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 .grid figure figcaption {
@@ -99,7 +99,7 @@ i.search {
   clear: both;
   margin: 0 auto;
   padding: 1em 0 4em;
-  max-width: 1000px;
+  max-width: 1500px;
   list-style: none;
   text-align: center;
 }
@@ -138,8 +138,10 @@ figure.effect-julia {
 figure.effect-julia img {
   /*max-width: none;*/
   /*height: 400px;*/
-  -webkit-transition: opacity 1s, -webkit-transform 1s;
-  transition: opacity 1s, transform 1s;
+  /*-webkit-transition: opacity 1s, -webkit-transform 1s;*/
+  -webkit-transition: -webkit-transform .5s;
+  /*transition: opacity 1s, transform 1s;*/
+  transition: transform .5s;
   -webkit-backface-visibility: hidden;
   backface-visibility: hidden;
 }
@@ -157,7 +159,8 @@ figure.effect-julia p {
   display: inline-block;
   margin: 0 0 0.25em;
   padding: 0.4em 1em;
-  background: rgba(255,255,255,0.9);
+  /*background: rgba(255,255,255,0.9);*/
+  background: lightgrey;
   color: #2f3238;
   text-transform: none;
   font-weight: 500;
@@ -199,9 +202,9 @@ figure.effect-julia:hover p:nth-of-type(3) {
 }
 
 figure.effect-julia:hover img {
-  opacity: 0.4;
-  -webkit-transform: scale3d(1.1,1.1,1);
-  transform: scale3d(1.1,1.1,1);
+  opacity: .5;
+  -webkit-transform: scale3d(1.01,1.01,1);
+  transform: scale3d(1.01,1.01,1);
 }
 
 figure.effect-julia:hover p {
