@@ -1,78 +1,56 @@
-<!--<div class="ui huge header">{{hello}}</div>-->
-<div class="col-md-5">
-  <img class="img-responsive" ng-src="{{recipe.image}}" alt="">
-</div>
-<div class="col-md-5">
-  <h3 class="p-name">{{recipe.name}}</h3>
-  <h4>Ingredients: {{recipe.ingredients.length}}</h4>
-  <h4>Time: 15 min</h4>
-  <img height="20" width= "20" src="http://images.media-allrecipes.com/ar-images/icons/rating-stars/full-star-2015.svg">
-  <img height="20" width= "20" src="http://images.media-allrecipes.com/ar-images/icons/rating-stars/full-star-2015.svg">
-  <img height="20" width= "20" src="http://images.media-allrecipes.com/ar-images/icons/rating-stars/full-star-2015.svg">
-  <img height="20" width= "20" src="http://images.media-allrecipes.com/ar-images/icons/rating-stars/full-star-2015.svg">
-  <img height="20" width= "20" src="http://images.media-allrecipes.com/ar-images/icons/rating-stars/half-star-2015.svg">
-  <h4>Submitted by: <a href="http://www.101cookbooks.com">yumminess</h4>
-</div>
-<div class="col-md-2">
-  <img class="img-responsive" ng-src="{{recipe.image}}" alt="">
-  <img class="img-responsive" ng-src="{{recipe.image}}" alt="">
-  <img class="img-responsive" ng-src="{{recipe.image}}" alt="">
-</div>
-
-<!-- <div class="ui vertically divided relaxed grid container">
-  <div class="six wide column">
-    <!-- <img ng-src="{{recipe.image}}" alt=""> -->
- <!--  </div>
-  <div class="ten wide column">
-  <!--   <h1 class="p-name">{{recipe.name}}</h1> -->
-
-  <!--   <p>Lorem ipsum dolor sit amet, consectetur.</p>
-
-    <div> -->
-      <!-- <div class="ui labeled button" tabindex="0">
-        <div class="ui red button">
-          <i class="heart icon"></i> Like
-        </div>
-        <a class="ui basic label">
-          2,048
-        </a>
-      </div>
-      <div class="ui left labeled button" tabindex="0">
-        <a class="ui basic label">
-          1,048
-        </a>
-
-        <div class="ui blue icon button">
-          <i class="fork icon"></i>
-        </div>
-      </div>
-      <div class="ui left labeled button" tabindex="0">
-        <a class="ui basic label">
-          1,048
-        </a>
-
-        <div class="ui icon violet button">
-          Share
-        </div>
-      </div>
+<div class="col-md-10">
+  <div class="row summary">
+    <div class="col-md-5">
+      <img class="img-responsive recipe" ng-src="http://assets.epicurious.com/photos/54b2f6e83edeef84363b52cf/6:4/w_620%2Ch_413/364092_chocolate-pudding_1x1.jpg" alt="">
     </div>
-    <h4 class="ui header">rating:</h4>
-
-    <div class="ui huge rating" data-rating="1" data-max-rating="3"></div>
-  </div>  -->
-  <div class="fourteen wide column">
-    <div class="text container recipe">
-
-      <h3 class="ui header">Ingredients</h3>
-
-      <div class="ui list">
-        <div class="item" ng-repeat="ingredient in recipe.ingredients">{{ingredient}}</div>
+    <div class="col-md-5">
+      <h3>{{recipe.name}}</h3>
+<!--       <div class="col-md-1">
+        <p class="head">Ingredients</p><p class="body">6</p><p class="foot">counts</p>
       </div>
-      <div ng-repeat="instruction in instructions" class="ui ordered list">
-        <div class="item">{{instruction}}</div>
-
+      <div class="col-md-1">
+        <p class="head">Time</p><p class="body">25</p><p class="foot">minutes<p>
       </div>
+      <div class="col-md-1">
+        <p class="head">Ratings</p><p class="body">4.5</p><p class="foot"><a href="#">168 reviews</a>
+      </div> -->
+      <table>
+        <tr>
+          <td><!-- <p class="head">Ratings</p> --><p class="body">4.5</p><p class="foot"><a href="#">168 reviews</a></p></td>
+          <td><!-- <p class="head">Time</p> --><p class="body">25</p><p class="foot">minutes<p></td>
+          <td><!-- <p class="head">Ingredients</p> --><p class="body">6</p><p class="foot">ingredients</p></td>
+          <td><p class="body"><!-- <p class="head">Start</p> --><p class="body"><i class="fa fa-microphone listen"></i></p><p class="foot">Start</p></td>
+      </tr>
+      </table>
     </div>
   </div>
+  <div class="row instructions">
+    <div class="col-md-5">
+      <h3>Ingredients</h3>
+      <ul>
+        <li class="item" ng-repeat="ingredient in recipe.ingredients">{{ingredient}}</li>
+      </ul>
+    </div>
+    <div class="col-md-5">    
+      <h3>Directions</h3>
+      <ol>
+        <li ng-repeat="instruction in recipe.instructions" class="ui ordered list">{{instruction}}</li>
+      </ol>
+    </div>
+  </div>
+</div>
+
+
+<div class="col-md-2 sidebar">
+  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/56098f336a59cdb91b5f7912/6:4/w_620%2Ch_413/363375_hires.jpg">     
+  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b33f6b460b4423363f21ca/6:4/w_620%2Ch_413/359369_arugula-fennel-apricot-salad_1x1.jpg">     
+  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b313063edeef84363b9b77/6:4/w_620%2Ch_413/359355_stuffed-chicken-breasts_1x1.jpg">
+  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/5609a79862fa7a9917c25b34/6:4/w_620%2Ch_413/356338_hires.jpg">     
+  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/561435e8f35fab51707e97fb/6:4/w_620%2Ch_413/354269_hires.jpg">
+  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/5609a4cae0acd286555db6a6/6:4/w_620%2Ch_413/351253_hires.jpg">
+  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b297f4a801766f773fbe28/6:4/w_620%2Ch_413/367759_lemon-zest-butter_1x1.jpg">
+  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b3402d21388ef838b08c84/6:4/w_620%2Ch_413/361830_mashed-potatoes_1x1.jpg">
+  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b429782413537c0d45e1da/6:4/w_620%2Ch_413/357729_savoy-cabbage_1x1.jpg">
+  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54bac5852a4b69f8647e9487/6:4/w_620%2Ch_413/fresh-herb-grapefruit-fennel-salad-6x4.jpg">
 </div>
 

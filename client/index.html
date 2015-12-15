@@ -11,8 +11,8 @@
 <body>
   <div class="ui attached stackable menu container">
     <div class="row nav">
-      <div class="col-md-4">
-        <h1 class="brand"><i class="fa fa-spoon brand"></i>umami</h1>
+      <div class="col-md-4 nav-left">
+        <h1 class="brand"><i class="fa fa-microphone brand"></i>umami</h1>
       </div>
       <div class="col-md-4 nav-mid">
         <div class="input-group">
@@ -28,7 +28,12 @@
         <input class="btn btn-default btn-signin" type="submit" value="Sign In">
       </div>
     </div>
-    <div ng-view></div>
+<!--   </div>
+  <div class="row separator">
+    Hi, separator
+  </div>
+  <div class="container"> 
+ -->    <div class="row content" ng-view></div>
     <div class="row footer">
       <div class="col-md-12">&copy; 2015 Honey Badger</div>
     </div>

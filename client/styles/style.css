@@ -1,6 +1,7 @@
 i.brand {
   color: orange;
   margin-right: 0.12em;
+  font-size: 0.8em;
 }
 h1.brand {
   color: #999;
@@ -19,40 +20,30 @@ i.search {
 }
 .nav {
   margin: 1.5em 0 2.5em 0;
+  padding-bottom: 1.5em;
+  border-bottom: solid 1px #eee;
+}
+.nav-left {
 }
 .nav-mid {
   margin-top: 2em;
 }
-
 .nav-right {
   margin-top: 2em;
+}
+.separator {
+  border: solid 1px #eee;
+  padding: 0.7em 0 0.7em 10em;
+  margin-bottom: 1em;
+}
+.content {
+  font-size: 1em;
 }
 .footer {
   margin: 3em 0;
   text-align: center;
   color: #999;
 }
-span.text-content {
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  cursor: pointer;
-  display: table;
-  left: 0;
-  position: absolute;
-  top: 0;
-  opacity: 0;
-  -webkit-transition: opacity 500ms;
-  -moz-transition: opacity 500ms;
-  -o-transition: opacity 500ms;
-  transition: opacity 500ms;
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-.foodPicLink:hover span.text-content {
-  opacity: 1;
-}
-
 
 /* hover effects ***************************/
 .grid figure {
@@ -220,4 +211,63 @@ figure.effect-julia:hover p {
 }
 
 
+/* single recipe page */
+div.summary {
+  margin-left: -15px;
+}
+div.summary h3 {
+  margin-top: 0;
+}
+div.instructions {
+  margin: 1em 0 0 0;
+}
+img.related {
+  /*max-height: 75px;*/
+  margin-bottom: 0.25em;
+  border: solid 1px #eee;
+}
+
+
+/* Summary section */
+.summary td {
+  padding-right: 2em;
+  color: #bbb;
+  /*vertical-align: top;*/
+  vertical-align: bottom;
+}
+.summary a {
+  font-weight: 200;
+}
+p.head {
+  font-size: 1em;
+  margin-top: 1em;
+}
+p.body {  
+  font-weight: 100;
+  font-size: 3em;
+  color: orange;
+  line-height: 0.7;
+  padding-right: 0.5em;
+}
+i.listen {
+  /*font-size:1.2em;*/
+}
+p.foot {
+  font-size: 0.9em;
+}
+
+
+/* Instructions */
+.instructions h3 {
+  text-transform: uppercase;
+/*  font-family: 'Helvetica';
+*/  font-weight: 100;
+}
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+ol {
+  padding-left: 1.5em;
+}
 
