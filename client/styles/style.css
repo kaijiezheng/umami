@@ -238,10 +238,6 @@ img.related {
 .summary a {
   font-weight: 200;
 }
-/*.listen {
-  color: orange;
-  font-size: 3em;
-}*/
 p.head {
   font-size: 1em;
   margin-top: 1em;
@@ -259,7 +255,19 @@ i.listen {
 p.foot {
   font-size: 0.9em;
 }
-/*.summary table td{
-  border: solid 1px red;
-  padding: 0;
-}*/
+
+
+/* Instructions */
+.instructions h3 {
+  text-transform: uppercase;
+/*  font-family: 'Helvetica';
+*/  font-weight: 100;
+}
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+ol {
+  padding-left: 1.5em;
+}
+
