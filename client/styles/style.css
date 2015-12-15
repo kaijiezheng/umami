@@ -219,5 +219,10 @@ figure.effect-julia:hover p {
   transform: translate3d(0,0,0);
 }
 
-
+.row .related {
+  max-height: 75px;
+  margin: 1em 0;
+}
+img.related {
+}
 

@@ -1,8 +1,42 @@
-<!--<div class="ui huge header">{{hello}}</div>-->
-<div class="col-md-5">
+<div class="row">
+  <div class="col-md-5">
+    <img class="img-responsive" ng-src="http://assets.epicurious.com/photos/54b2f6e83edeef84363b52cf/6:4/w_620%2Ch_413/364092_chocolate-pudding_1x1.jpg" alt="">
+  </div>
+  <div class="col-md-7">
+  </div>
+</div>
+<div class="row related">
+  <table>
+    <tr>
+       <td><img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/56098f336a59cdb91b5f7912/6:4/w_620%2Ch_413/363375_hires.jpg" alt=""></td>     
+       <td><img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b33f6b460b4423363f21ca/6:4/w_620%2Ch_413/359369_arugula-fennel-apricot-salad_1x1.jpg" alt=""></td>     
+       <td><img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b313063edeef84363b9b77/6:4/w_620%2Ch_413/359355_stuffed-chicken-breasts_1x1.jpg" alt=""></td>
+       <td><img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/5609a79862fa7a9917c25b34/6:4/w_620%2Ch_413/356338_hires.jpg" alt=""></td>     
+      <td><img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/561435e8f35fab51707e97fb/6:4/w_620%2Ch_413/354269_hires.jpg" alt=""></td>
+      <td><img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/5609a4cae0acd286555db6a6/6:4/w_620%2Ch_413/351253_hires.jpg" alt=""></td>
+      <td><img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b297f4a801766f773fbe28/6:4/w_620%2Ch_413/367759_lemon-zest-butter_1x1.jpg" alt=""></td>
+      <td><img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b3402d21388ef838b08c84/6:4/w_620%2Ch_413/361830_mashed-potatoes_1x1.jpg" alt=""></td>
+      <td><img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b429782413537c0d45e1da/6:4/w_620%2Ch_413/357729_savoy-cabbage_1x1.jpg" alt=""></td>
+      <td><img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54bac5852a4b69f8647e9487/6:4/w_620%2Ch_413/fresh-herb-grapefruit-fennel-salad-6x4.jpg" alt=""></td>
+    </tr>
+  </table>
+</div>
+<div class="row instructions">
+  <div class="ui list">
+    <h3>Ingredients</h3>
+    <div class="item" ng-repeat="ingredient in recipe.ingredients">{{ingredient}}</div>
+  </div>
+  <h3>Instructions</h3>
+  <div ng-repeat="instruction in instructions" class="ui ordered list">
+    <div class="item">{{recipe.instructions}}</div>
+  </div>
+</div>
+
+
+<!-- <div class="col-md-4">
   <img class="img-responsive" ng-src="{{recipe.image}}" alt="">
 </div>
-<div class="col-md-5">
+<div class="col-md-6">
   <h3 class="p-name">{{recipe.name}}</h3>
   <h4>Ingredients: {{recipe.ingredients.length}}</h4>
   <h4>Time: 15 min</h4>
@@ -14,10 +48,8 @@
   <h4>Submitted by: <a href="http://www.101cookbooks.com">yumminess</h4>
 </div>
 <div class="col-md-2">
-  <img class="img-responsive" ng-src="{{recipe.image}}" alt="">
-  <img class="img-responsive" ng-src="{{recipe.image}}" alt="">
-  <img class="img-responsive" ng-src="{{recipe.image}}" alt="">
-</div>
+  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/561435e8f35fab51707e97fb/6:4/w_620%2Ch_413/354269_hires.jpg">
+</div> -->
 
 <!-- <div class="ui vertically divided relaxed grid container">
   <div class="six wide column">
@@ -60,7 +92,7 @@
 
     <div class="ui huge rating" data-rating="1" data-max-rating="3"></div>
   </div>  -->
-  <div class="fourteen wide column">
+  <!-- <div class="fourteen wide column">
     <div class="text container recipe">
 
       <h3 class="ui header">Ingredients</h3>
@@ -74,5 +106,5 @@
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
