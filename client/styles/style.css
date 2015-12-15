@@ -25,7 +25,6 @@ i.search {
 .nav-mid {
   margin-top: 2em;
 }
-
 .nav-right {
   margin-top: 2em;
 }
@@ -34,27 +33,6 @@ i.search {
   text-align: center;
   color: #999;
 }
-/*span.text-content {
-  background: rgba(0, 0, 0, 0.5);
-  color: white;
-  cursor: pointer;
-  display: table;
-  left: 0;
-  position: absolute;
-  top: 0;
-  opacity: 0;
-  -webkit-transition: opacity 500ms;
-  -moz-transition: opacity 500ms;
-  -o-transition: opacity 500ms;
-  transition: opacity 500ms;
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
-.foodPicLink:hover span.text-content {
-  opacity: 1;
-}*/
-
 
 /* hover effects ***************************/
 .grid figure {
@@ -236,14 +214,10 @@ div.summary {
 div.summary h3 {
   margin-top: 0;
 }
-/*
-div.related{
-  margin: 1em 0 0 0;
-}
 div.instructions {
   margin: 1em 0 0 0;
 }
-.summary td {
+/*.summary td {
   padding: 1em;
 }*/
 
