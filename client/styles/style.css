@@ -231,8 +231,17 @@ div.recipe {
   margin-top: 1em;
 }
 
-
 /* Summary section */
+.summaryTable {
+  background-color: #f5f5f5;
+  padding:10px;
+}
+.recipeName{
+  font-family: "acta-display",Georgia,serif;
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.1;
+ }
 .summary td {
   padding-right: 2em;
   color: #bbb;
@@ -243,7 +252,14 @@ div.recipe {
   font-weight: 200;
 }
 p.head {
+  font-family: "Hoefler Text","Baskerville old face",Garamond,"Times New Roman",serif;
+  color: #6c6c6c;
+  font-style: italic;
+  margin-top: 20px;
+  display: block;
   font-size: 1em;
+  line-height: 1;
+  width: 150%;
   margin-top: 1em;
 }
 p.body {  
