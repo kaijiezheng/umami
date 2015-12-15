@@ -51,11 +51,12 @@ i.search {
   float: left;
   overflow: hidden;
   margin: 10px 1%;
-  min-width: 240px;
-  max-width: 320px;
+/*  min-width: 320px;
+  max-width: 480px;
+>>>>>>> search style - place result images in 3 columns
   max-height: 360px;
   width: 48%;
-  height: auto;
+  height: auto;*/
   background: #3085a3;
   text-align: center;
   cursor: pointer;
@@ -99,8 +100,8 @@ i.search {
   clear: both;
   margin: 0 auto;
   padding: 1em 0 4em;
-  max-width: 1500px;
-  list-style: none;
+/*  max-width: 1000px;
+*/  list-style: none;
   text-align: center;
 }
 
@@ -252,9 +253,6 @@ p.body {
   line-height: 0.7;
   padding-right: 0.5em;
 }
-i.listen {
-  /*font-size:1.2em;*/
-}
 p.foot {
   font-size: 0.9em;
 }
@@ -263,8 +261,7 @@ p.foot {
 /* Instructions */
 .instructions h3 {
   text-transform: uppercase;
-/*  font-family: 'Helvetica';
-*/  font-weight: 100;
+  font-weight: 100;
 }
 ul {
   list-style: none;
