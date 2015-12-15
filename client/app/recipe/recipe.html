@@ -1,19 +1,35 @@
-<article class="h-recipe">
-  <div class="e-instructions">
-  </div>
-</article>
 <!--<div class="ui huge header">{{hello}}</div>-->
-<div class="ui vertically divided relaxed grid container">
+<div class="col-md-5">
+  <img class="img-responsive" ng-src="{{recipe.image}}" alt="">
+</div>
+<div class="col-md-5">
+  <h3 class="p-name">{{recipe.name}}</h3>
+  <h4>Ingredients: {{recipe.ingredients.length}}</h4>
+  <h4>Time: 15 min</h4>
+  <img height="20" width= "20" src="http://images.media-allrecipes.com/ar-images/icons/rating-stars/full-star-2015.svg">
+  <img height="20" width= "20" src="http://images.media-allrecipes.com/ar-images/icons/rating-stars/full-star-2015.svg">
+  <img height="20" width= "20" src="http://images.media-allrecipes.com/ar-images/icons/rating-stars/full-star-2015.svg">
+  <img height="20" width= "20" src="http://images.media-allrecipes.com/ar-images/icons/rating-stars/full-star-2015.svg">
+  <img height="20" width= "20" src="http://images.media-allrecipes.com/ar-images/icons/rating-stars/half-star-2015.svg">
+  <h4>Submitted by: </h4>
+</div>
+<div class="col-md-2">
+  <img class="img-responsive" ng-src="{{recipe.image}}" alt="">
+  <img class="img-responsive" ng-src="{{recipe.image}}" alt="">
+  <img class="img-responsive" ng-src="{{recipe.image}}" alt="">
+</div>
+
+<!-- <div class="ui vertically divided relaxed grid container">
   <div class="six wide column">
-    <img ng-src="{{recipe.image}}" alt="">
-  </div>
+    <!-- <img ng-src="{{recipe.image}}" alt=""> -->
+ <!--  </div>
   <div class="ten wide column">
-    <h1 class="p-name">{{recipe.name}}</h1>
+  <!--   <h1 class="p-name">{{recipe.name}}</h1> -->
 
-    <p>Lorem ipsum dolor sit amet, consectetur.</p>
+  <!--   <p>Lorem ipsum dolor sit amet, consectetur.</p>
 
-    <div>
-      <div class="ui labeled button" tabindex="0">
+    <div> -->
+      <!-- <div class="ui labeled button" tabindex="0">
         <div class="ui red button">
           <i class="heart icon"></i> Like
         </div>
@@ -43,7 +59,7 @@
     <h4 class="ui header">rating:</h4>
 
     <div class="ui huge rating" data-rating="1" data-max-rating="3"></div>
-  </div>
+  </div>  -->
   <div class="fourteen wide column">
     <div class="text container recipe">
 
@@ -59,5 +75,4 @@
     </div>
   </div>
 </div>
-
 
