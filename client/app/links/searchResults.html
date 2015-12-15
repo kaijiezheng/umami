@@ -14,57 +14,56 @@
 <!--</div>-->
 <!--</div>-->
 
-    <div class="row" class="item" ng-repeat="recipe in recipes track by $index" ng-switch on="$index % 3">
 
-      <div class="col-md-4" ng-show="recipe">
-        <div ng-switch-when="0" class="foodPicLink">
-          <a  ng-click="goRecipe(recipe)">
-            <img class="foodPic img-responsive" ng-src="{{recipe.image || assets/Recipesfallback.png}}"
-           onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image"></a>
-            <span class="text-content food"><span>{{recipe.name}}</span></span>
+    <div class="row content" ng-repeat="recipe in recipes track by $index" ng-switch on="$index % 3">
+
+      <!--<div class="col-md-4" ng-show="recipe" ng-click="goRecipe(recipe)">-->
+      <!--<div ng-switch-when="0" class="foodPicLink box"  >-->
+      <!--<img class="foodPic img-responsive" ng-src="{{recipe.image || assets/Recipesfallback.png}}"-->
+      <!--onerror=" this.src = 'assets/Recipesfallback.png';" alt="{{recipes[$index].name}}">-->
+      <!--<span class="caption fade-caption">{{recipe.name}}</span>-->
+      <!--</div>-->
+      <!--</div>-->
+
+      <div class="col-md-4 grid" ng-show="recipe" ng-click="goRecipe(recipe)">
+        <div ng-switch-when="0"  >
+          <figure class="effect-julia">
+            <img class="foodPic img-responsive" ng-src="{{recipe.image || assets/Recipesfallback.png}}" alt="{{recipes[$index].name}}">
+            <figcaption>
+              <div>
+                  <p>{{recipe.name}}</p>
+              </div>
+            </figcaption>
+          </figure>
         </div>
       </div>
-
-      <div class="col-md-4" ng-show="recipes[$index + 1]">
-       <div ng-switch-when="0" class="foodPicLink">
-         <a  ng-click="goRecipe(recipes[$index + 1])">
-         <img class="foodPic img-responsive" ng-src="{{recipes[$index + 1].image || assets/Recipesfallback.png}}"
-           onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">
-            <span class="text-content food"><span>{{recipes[$index + 1].name}}</span></span>
+      <div class="col-md-4 grid" ng-show="recipes[$index+1]" ng-click="goRecipe(recipes[$index+1])">
+        <div ng-switch-when="0"  >
+          <figure class="effect-julia">
+            <img class="foodPic img-responsive" ng-src="{{recipes[$index+1].image || assets/Recipesfallback.png}}" alt="{{recipes[$index+1].name}}">
+            <figcaption>
+              <div>
+                <p>{{recipes[$index+1].name}}</p>
+              </div>
+            </figcaption>
+          </figure>
         </div>
       </div>
-
-      <div class="col-md-4" ng-show="recipes[$index + 2]">
-        <div ng-switch-when="0" class="foodPicLink">
-          <a  ng-click="goRecipe(recipes[$index + 2])">
-          <img class="foodPic img-responsive" ng-src="{{recipes[$index + 2].image || assets/Recipesfallback.png}}"
-         onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">
-          <span class="text-content food"><span>{{recipes[$index + 2].name}}</span></span>
+      <div class="col-md-4 grid" ng-show="recipes[$index+2]" ng-click="goRecipe(recipes[$index+2])">
+        <div ng-switch-when="0"   >
+          <!--<span class="caption fade-caption"></span>-->
+          <figure class="effect-julia">
+            <!--<img src="img/21.jpg" alt="img21"/>-->
+            <img class="foodPic img-responsive" ng-src="{{recipes[$index+2].image || assets/Recipesfallback.png}}" alt="{{recipes[$index+2].name}}">
+            <figcaption>
+              <div>
+                <p>{{recipes[$index+2].name}}</p>
+              </div>
+            </figcaption>
+          </figure>
         </div>
       </div>
-
-
     </div>
-  </div>
-  <div class="col-md-4 col-lg-4" ng-show="recipes[$index+1]">
-    <div>
-      <a href="#" ng-click="goRecipe(recipes[$index+1])">
-        {{$index+1}}
-        <img class="foodPic img-responsive" ng-src="{{recipes[$index + 1].image || assets/Recipesfallback.png}}" alt="food image">
-      </a>
-      <span class="text-content"><span>{{recipes[$index + 1].name}}</span></span>
-    </div>
-  </div>
-  <div class="col-md-4 col-lg-4" ng-show="recipes[$index+2]">
-    <div ng-switch-when="0">
-      <a href="#" ng-click="goRecipe(recipes[$index+2])">
-        {{$index+2}}
-        <img class="foodPic img-responsive" ng-src="{{recipes[$index + 2].image || assets/Recipesfallback.png}}" alt="food image">
-      </a>
-      <span class="text-content"><span>{{recipes[$index + 2].name}}</span></span>
-    </div>
-  </div>
-</div>
 
 <!--    <div ng-click="goRecipe(recipe)" class="item" ng-repeat="recipe in recipes track by $index">
      <div class="image">
