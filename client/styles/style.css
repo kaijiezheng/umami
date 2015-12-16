@@ -227,6 +227,9 @@ img.related {
   margin-bottom: 0.25em;
   border: solid 1px #eee;
 }
+div.recipe {
+  margin-top: 1em;
+}
 
 
 /* Summary section */
@@ -272,8 +275,8 @@ ol {
 div.search {
   margin-left: 0;
 }
-div.search-header {
+div.title-header {
   margin-top: -1em;
-  text-align:center;
+  text-align:left;
 }
 
