@@ -27,17 +27,20 @@ angular.module('umami.recipe', ['ngRoute'])
       "image": "http://assets.epicurious.com/photos/5609a75e62fa7a9917c25aa0/master/pass/355892.jpg",
       "instructions": ["Bring a kettle of water to a boil.", "Stir together the bulgur and 1 tablespoon of the oil in a heatproof bowl.", "Add boiling water to cover.", "Cover the bowl tightly with plastic wrap and let stand for 15 minutes.", "Drain in a sieve, pressing on the bulgur to remove any excess liquid.", "Transfer the bulgur to a large bowl and toss with the remaining 1 tablespoon oil and the rest of the ingredients until everything is well mixed.", "Cover and refrigerate for at least 3 hours.", "Serve cold."]
     };
+    recipe.instructions = recipe.instructions.filter(item=> item.length>3)
     $scope.recipe = recipe;
 
-    console.log(recipe);
+    //console.log(recipe);
     var prevLength;
 
     // test text-to-speech
     var u = new SpeechSynthesisUtterance();
-    u.text = 'Speech recognition is working';
-    u.lang = 'en-US';
+    u.rate = .8;
+    u.text = 'Lets have some tea';
+    u.lang = 'en-UK';
+    //u.voice = window.speechSynthesis.getVoices()[16];
     //speechSynthesis.speak(u);
-    console.log("getIngredients() = ", getIngredients());
+    //console.log("getIngredients() = ", getIngredients());
     var recognizer = new webkitSpeechRecognition();
     recognizer.continuous = true;
     recognizer.interimResults = true;

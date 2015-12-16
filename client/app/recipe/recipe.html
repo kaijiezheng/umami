@@ -1,7 +1,7 @@
 <div class="col-md-10 recipe">
   <div class="row summary">
     <div class="col-md-5">
-      <img class="img-responsive recipe" ng-src="http://assets.epicurious.com/photos/54b2f6e83edeef84363b52cf/6:4/w_620%2Ch_413/364092_chocolate-pudding_1x1.jpg" alt="">
+      <img class="img-responsive recipe" ng-src="{{recipe.image}}" alt="">
     </div>
       <div class="col-md-5">
         <div class="summaryTable">
@@ -30,13 +30,13 @@
     <div class="col-md-5">
       <h3 class="upper">Ingredients</h3>
       <ul>
-        <li class="item" ng-repeat="ingredient in recipe.ingredients">{{ingredient}}</li>
+        <li class="item" ng-repeat="ingredient in recipe.ingredients track by $index">{{ingredient}}</li>
       </ul>
     </div>
     <div class="col-md-5">
       <h3 class="upper">Directions</h3>
       <ol>
-        <li ng-repeat="instruction in recipe.instructions" class="ui ordered list">{{instruction}}</li>
+        <li ng-repeat="instruction in recipe.instructions track by $index" class="ui ordered list">{{instruction}}</li>
       </ol>
     </div>
   </div>
