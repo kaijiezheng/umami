@@ -1,8 +1,6 @@
-<!-- Your html here -->
-<div class="ui horizontal divider">
-  Search Results
+<div class="row search-header" style="text-align:center">
+  <h3 class="upper">10 Search Results</h3>
 </div>
-
 <!--this is the code for packery. currently not working. to be debugged for the next iteration-->
 <!--<div class="module-container" workspace>-->
 <!--&lt;!&ndash; sizers &ndash;&gt;-->
@@ -14,77 +12,38 @@
 <!--</div>-->
 <!--</div>-->
 
-<div class="grid">
-  <div class="row content">
-
-    <div  ng-repeat="recipe in recipes track by $index" >
-
-      <!--<div class="col-md-4" ng-show="recipe" ng-click="goRecipe(recipe)">-->
-      <!--<div ng-switch-when="0" class="foodPicLink box"  >-->
-      <!--<img class="foodPic img-responsive" ng-src="{{recipe.image || assets/Recipesfallback.png}}"-->
-      <!--onerror=" this.src = 'assets/Recipesfallback.png';" alt="{{recipes[$index].name}}">-->
-      <!--<span class="caption fade-caption">{{recipe.name}}</span>-->
-      <!--</div>-->
-      <!--</div>-->
-
-      <div ng-show="recipe" ng-click="goRecipe(recipe)">
-        <div>
-          <figure class="effect-julia">
-            <img class="foodPic img-responsive" ng-src="{{recipe.image || assets/Recipesfallback.png}}" alt="{{recipes[$index].name}}">
-            <figcaption>
-              <div>
-                  <p>{{recipe.name}}</p>
-              </div>
-            </figcaption>
-          </figure>
-        </div>
-      </div>
-  </div>
-      <!--<div class=" " ng-show="recipes[$index+1]" ng-click="goRecipe(recipes[$index+1])">-->
-        <!--<div ng-switch-when="0"  >-->
-          <!--<figure class="effect-julia">-->
-            <!--<img class="foodPic img-responsive" ng-src="{{recipes[$index+1].image || assets/Recipesfallback.png}}" alt="{{recipes[$index+1].name}}">-->
-            <!--<figcaption>-->
-              <!--<div>-->
-                <!--<p>{{recipes[$index+1].name}}</p>-->
-              <!--</div>-->
-            <!--</figcaption>-->
-          <!--</figure>-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class=" " ng-show="recipes[$index+2]" ng-click="goRecipe(recipes[$index+2])">-->
-        <!--<div ng-switch-when="0"   >-->
-          <!--&lt;!&ndash;<span class="caption fade-caption"></span>&ndash;&gt;-->
-          <!--<figure class="effect-julia">-->
-            <!--&lt;!&ndash;<img src="img/21.jpg" alt="img21"/>&ndash;&gt;-->
-            <!--<img class="foodPic img-responsive" ng-src="{{recipes[$index+2].image || assets/Recipesfallback.png}}" alt="{{recipes[$index+2].name}}">-->
-            <!--<figcaption>-->
-              <!--<div>-->
-                <!--<p>{{recipes[$index+2].name}}</p>-->
-              <!--</div>-->
-            <!--</figcaption>-->
-          <!--</figure>-->
-        <!--</div>-->
-      <!--</div>-->
+<div class="row col-md-12 search" ng-repeat="recipe in recipes track by $index" ng-switch on="$index % 3">
+  <div class="col-md-4" ng-show="recipe" ng-click="goRecipe(recipe)">
+    <div ng-switch-when="0" class="grid">
+      <figure class="effect-julia">
+        <img class="img-responsive" ng-src="{{recipe.image || assets/Recipesfallback.png}}" alt="{{recipes[$index].name}}">
+        <figcaption>
+          <div><p>{{recipe.name}}</p></div>
+        </figcaption>
+      </figure>
     </div>
+  </div>
+   <div class="col-md-4" ng-show="recipes[$index+1]" ng-click="goRecipe(recipes[$index+1])">
+    <div ng-switch-when="0" class="grid">
+      <figure class="effect-julia">
+        <img class="img-responsive" ng-src="{{recipes[$index+1].image || assets/Recipesfallback.png}}" alt="{{recipes[$index+1].name}}">
+        <figcaption>
+          <div><p>{{recipes[$index+1].name}}</p></div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="col-md-4" ng-show="recipes[$index+2]" ng-click="goRecipe(recipes[$index+2])">
+    <div ng-switch-when="0" class="grid">
+      <figure class="effect-julia">
+        <img class="img-responsive" ng-src="{{recipes[$index+2].image || assets/Recipesfallback.png}}" alt="{{recipes[$index+2].name}}">
+        <figcaption>
+          <div>
+            <p>{{recipes[$index+2].name}}</p>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
 </div>
 
-<!--    <div ng-click="goRecipe(recipe)" class="item" ng-repeat="recipe in recipes track by $index">
-     <div class="image">
-       <img class="foodPic" ng-src="{{recipe.image || assets/Recipesfallback.png}}"
-            onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">
-     </div>
-     <div class="content">
-       <div class="header">{{ recipe.name }}</div>
-       <div class="meta">
-         <span>Description</span>
-       </div>
-       <div class="description"><p>{{ recipe.description }}</p></div>
-       <div class="extra">Cook Time: {{ recipe.cookTime.replace("PT", "").replace('M', 'Min') }} Prep Time: {{
-         recipe.prepTime.replace("PT", "").replace('M', 'Min') }}
-       </div>
-     </div>
-     <div class="ui section divider"></div>
-   </div>
-</div>
--->
