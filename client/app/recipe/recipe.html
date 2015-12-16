@@ -3,16 +3,27 @@
     <div class="col-md-5">
       <img class="img-responsive recipe" ng-src="http://assets.epicurious.com/photos/54b2f6e83edeef84363b52cf/6:4/w_620%2Ch_413/364092_chocolate-pudding_1x1.jpg" alt="">
     </div>
-    <div class="col-md-5">
-      <h3>{{recipe.name}}</h3>
-      <table>
-        <tr>
-          <td><!-- <p class="head">Ratings</p> --><p class="body">4.5</p><p class="foot"><a href="#">168 reviews</a></p></td>
-          <td><!-- <p class="head">Time</p> --><p class="body">25</p><p class="foot">minutes<p></td>
-          <td><!-- <p class="head">Ingredients</p> --><p class="body">6</p><p class="foot">ingredients</p></td>
-          <td ng-click="startRecord()"><p class="body"><!-- <p class="head">Start</p> --><p class="body"><i class="fa fa-microphone listen"></i></p><p class="foot">Start</p></td>
-      </tr>
-      </table>
+      <div class="col-md-5">
+        <div class="summaryTable">
+        <h3 class="recipeName">{{recipe.name}}</h3>
+<!--       <div class="col-md-1">
+        <p class="head">Ingredients</p><p class="body">6</p><p class="foot">counts</p>
+      </div>
+      <div class="col-md-1">
+        <p class="head">Time</p><p class="body">25</p><p class="foot">minutes<p>
+      </div>
+      <div class="col-md-1">
+        <p class="head">Ratings</p><p class="body">4.5</p><p class="foot"><a href="#">168 reviews</a>
+      </div> -->
+        <table>
+          <tr>
+            <td><p class="head">Ratings</p><p class="body">4.5</p><p class="foot"><a href="#">168 reviews</a></p></td>
+            <td><p class="head">Time</p><p class="body">25</p><p class="foot">Minutes<p></td>
+            <td><p class="head">Ingredients</p><p class="body">{{recipe.ingredients.length}}</p><p class="foot">Count</p></td>
+            <td><!-- <p class="body"> --><!-- <p class="head">Start</p> --><p class="body"><i class="fa fa-microphone listen"></i></p><p class="foot">Start</p></td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
   <div class="row instructions">
