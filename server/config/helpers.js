@@ -1,6 +1,22 @@
+/**
+ * A module that contains all functions to handle tour requests
+ * @module config/helpers
+ * @require jwt-simple
+ */
 var jwt = require('jwt-simple');
 
+/**
+ * Helper functions for error logging and token decoding.
+ *
+ */
 module.exports = {
+  /**
+   * Error logging middleware.
+   * @param {error} error - The error that was encountered.
+   * @param {object} req - Contains request parameters.
+   * @param {object} res - Contains response parameters.
+   * @param {function} next - Calls next middleware.
+   */
   errorLogger: function (error, req, res, next) {
     // Log the error then send it to the next middleware in
     console.error(error.stack);
