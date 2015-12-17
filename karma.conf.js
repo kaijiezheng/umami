@@ -1,51 +1,44 @@
 // Karma configuration
-// Generated on Mon Jun 30 2014 19:35:20 GMT-0700 (PDT)
+// Generated on Wed Dec 16 2015 12:04:53 GMT-0800 (PST)
 
-module.exports = function (config) {
+module.exports = function(config) {
   config.set({
 
     // base path that will be used to resolve all patterns (eg. files, exclude)
-    basePath: './',
+    basePath: '',
 
 
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
-    frameworks: ['jasmine'],
+    frameworks: ['mocha','chai'],
 
 
     // list of files / patterns to load in the browser
     files: [
-      // angular source
       'client/lib/angular/angular.js',
       'client/lib/angular-route/angular-route.js',
-      'client/lib/angular-mocks/angular-mocks.js',
-
-      // our app code
+      'client/lib/angular-nlp-compromise/dist/angular-nlp-compromise.min.js',
+      'node_modules/angular-mocks/angular-mocks.js',
       'client/app/**/*.js',
-
-      // our spec files
-      'node_modules/expect.js/index.js',
-      'specs/client/**/*.js'
+      'specs/client/services.js'
     ],
 
 
     // list of files to exclude
     exclude: [
-        'karma.conf.js'
     ],
 
 
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-
     },
 
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['nyan','unicorn'],
+    reporters: ['progress','nyan','unicorn'],
 
 
     // web server port
@@ -62,15 +55,18 @@ module.exports = function (config) {
 
 
     // enable / disable watching file and executing tests whenever any file changes
-    autoWatch: false,
+    autoWatch: true,
 
 
     // start these browsers
     // available browser launchers: https://npmjs.org/browse/keyword/karma-launcher
-    browsers: ['Chrome', 'PhantomJS'],
+    browsers: ["Chrome"],
 
     // Continuous Integration mode
     // if true, Karma captures browsers, runs the tests and exits
-    singleRun: true
-  });
-};
+    singleRun: false,
+
+
+
+  })
+}

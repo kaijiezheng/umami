@@ -18,8 +18,8 @@ var recipeObj = {
   instructions: [
     'Mix',
     'Cook'],
-  picUrl: "assets/chocolate.jpg"
-  nextInstructionIndex: 0;
+  picUrl: "assets/chocolate.jpg",
+  nextInstructionIndex: 0
 };
 
 
@@ -54,6 +54,6 @@ Recipe.prototype.getOneIngredient = function(keyword){
 };
 
 Recipe.prototype.getQuantity = function(ingredient) {
-  
+
 };
 

@@ -1,29 +1,23 @@
-<div class="col-md-10 recipe">
+
+<div class="col-md-9 recipe">
   <div class="row summary">
     <div class="col-md-5">
-      <img class="img-responsive recipe" ng-src="{{recipe.image}}" alt="">
+      <img class="img-responsive recipe" ng-src="{{recipe.image}}" alt="{{recipe.name}}">
     </div>
-      <div class="col-md-5">
-        <div class="summaryTable">
+    <div class="col-md-7">
+      <div class="summaryTable">
         <h3 class="recipeName">{{recipe.name}}</h3>
-<!--       <div class="col-md-1">
-        <p class="head">Ingredients</p><p class="body">6</p><p class="foot">counts</p>
       </div>
-      <div class="col-md-1">
-        <p class="head">Time</p><p class="body">25</p><p class="foot">minutes<p>
-      </div>
-      <div class="col-md-1">
-        <p class="head">Ratings</p><p class="body">4.5</p><p class="foot"><a href="#">168 reviews</a>
-      </div> -->
-        <table>
-          <tr>
-            <td><p class="head">Ratings</p><p class="body">4.5</p><p class="foot"><a href="#">168 reviews</a></p></td>
-            <td><p class="head">Time</p><p class="body">25</p><p class="foot">Minutes<p></td>
-            <td><p class="head">Ingredients</p><p class="body">{{recipe.ingredients.length}}</p><p class="foot">Count</p></td>
-            <td><!-- <p class="body"> --><!-- <p class="head">Start</p> --><p class="body"><i class="fa fa-microphone listen"></i></p><p class="foot">Start</p></td>
-          </tr>
-        </table>
-      </div>
+      <table>
+        <tr>
+          <td><p class="head">Ratings</p><p class="body">4.5</p><p class="foot"><a href="#">168 reviews</a></p></td>
+          <!--TODO: stars instead of number for ratings-->
+          <td><p class="head">Time</p><p class="body">25</p><p class="foot">Minutes<p></td>
+          <td><p class="head">Ingredients</p><p class="body">{{recipe.ingredients.length}}</p><p class="foot">Count</p></td>
+          <!--TODO: add YIELD information in a <td>-->
+          <td><p ng-click="startRecord()" class="body"><i class="fa fa-microphone listen"></i></p><p class="foot">Start</p></td>
+        </tr>
+      </table>
     </div>
   </div>
   <div class="row instructions">
@@ -33,7 +27,7 @@
         <li class="item" ng-repeat="ingredient in recipe.ingredients track by $index">{{ingredient}}</li>
       </ul>
     </div>
-    <div class="col-md-5">
+    <div class="col-md-7">
       <h3 class="upper">Directions</h3>
       <ol>
         <li ng-repeat="instruction in recipe.instructions track by $index" class="ui ordered list">{{instruction}}</li>
@@ -42,17 +36,16 @@
   </div>
 </div>
 
-
-<div class="col-md-2 sidebar recipe">
+<div class="col-md-3 sidebar recipe">
   <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/56098f336a59cdb91b5f7912/6:4/w_620%2Ch_413/363375_hires.jpg">
   <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b33f6b460b4423363f21ca/6:4/w_620%2Ch_413/359369_arugula-fennel-apricot-salad_1x1.jpg">
   <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b313063edeef84363b9b77/6:4/w_620%2Ch_413/359355_stuffed-chicken-breasts_1x1.jpg">
   <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/5609a79862fa7a9917c25b34/6:4/w_620%2Ch_413/356338_hires.jpg">
   <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/561435e8f35fab51707e97fb/6:4/w_620%2Ch_413/354269_hires.jpg">
   <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/5609a4cae0acd286555db6a6/6:4/w_620%2Ch_413/351253_hires.jpg">
-  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b297f4a801766f773fbe28/6:4/w_620%2Ch_413/367759_lemon-zest-butter_1x1.jpg">
-  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b3402d21388ef838b08c84/6:4/w_620%2Ch_413/361830_mashed-potatoes_1x1.jpg">
-  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b429782413537c0d45e1da/6:4/w_620%2Ch_413/357729_savoy-cabbage_1x1.jpg">
-  <img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54bac5852a4b69f8647e9487/6:4/w_620%2Ch_413/fresh-herb-grapefruit-fennel-salad-6x4.jpg">
+  <!--<img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b297f4a801766f773fbe28/6:4/w_620%2Ch_413/367759_lemon-zest-butter_1x1.jpg">-->
+  <!--<img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b3402d21388ef838b08c84/6:4/w_620%2Ch_413/361830_mashed-potatoes_1x1.jpg">-->
+  <!--<img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54b429782413537c0d45e1da/6:4/w_620%2Ch_413/357729_savoy-cabbage_1x1.jpg">-->
+  <!--<img class="img-responsive related" ng-src="http://assets.epicurious.com/photos/54bac5852a4b69f8647e9487/6:4/w_620%2Ch_413/fresh-herb-grapefruit-fennel-salad-6x4.jpg">-->
 </div>
 

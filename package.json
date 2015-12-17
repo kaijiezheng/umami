@@ -4,7 +4,8 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "gulp"
+    "start": "gulp",
+    "test": "./node_modules/karma/bin/karma start karma.conf.js"
   },
   "license": "ISC",
   "devDependencies": {
@@ -32,12 +33,17 @@
     "pre-commit": "^1.1.1"
   },
   "dependencies": {
+    "angular-mocks": "^1.4.8",
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.4.3",
+    "chai": "^3.4.1",
     "elastic.js": "fullscale/elastic.js#b29b7d2",
     "elasticsearch": "^10.0.1",
     "express": "^4.4.5",
     "jwt-simple": "^0.2.0",
+    "karma-chai": "^0.1.0",
+    "karma-unicorn-reporter": "^0.1.4",
+    "mocha": "^1.21.5",
     "mongoose": "^4.1.0",
     "morgan": "^1.1.1",
     "passport": "^0.2.0",

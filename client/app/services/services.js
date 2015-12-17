@@ -1,32 +1,7 @@
 angular.module('umami.services', [])
 
-.factory('Links', function ($http) {
-  // Your code here
 
-  var getAll = function () {
-    return $http({
-      method: 'GET',
-      url: '/api/links'
-    })
-    .then(function (resp) {
-      return resp.data;
-    });
-  };
-
-  var addLink = function (link) {
-    return $http({
-      method: 'POST',
-      url: '/api/links',
-      data: link
-    });
-  };
-
-  return {
-    getAll: getAll,
-    addLink: addLink
-  };
-  })
-.factory('searchResult', function() {
+.factory('searchResult', function (){
     var storage;
 
     function setStorage(data) {
@@ -36,6 +11,8 @@ angular.module('umami.services', [])
     function getStorage() {
         return storage;
     }
+
+
 
     return {
       setStorage:setStorage,
