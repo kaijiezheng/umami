@@ -17,6 +17,7 @@ angular.module('umami.recipe', ['ngRoute'])
 
     var recipe = searchResult.getStorage() || {
       "id": "5160d4f896cc620d188cb475",
+        //?api/recipe/5160d4f896cc620d188cb475
       "name": "Lemon and Fresh Herb Tabbouleh",
       "source": "epicurious",
       "url": "http://www.epicurious.com/recipes/food/views/Lemon-and-Fresh-Herb-Tabbouleh-355892",
