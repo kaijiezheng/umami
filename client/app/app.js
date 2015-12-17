@@ -1,7 +1,6 @@
 angular.module('umami', [
   'umami.services',
-  'umami.links',
-  'umami.shorten',
+  'umami.search',
   'umami.auth',
   'umami.recipe',
   "nlpCompromise",
@@ -17,21 +16,15 @@ angular.module('umami', [
       templateUrl: 'app/auth/signup.html',
       controller: 'AuthController'
     })
-    // Your code here
-
     .when('/search', {
-      templateUrl: 'app/links/searchResults.html',
-      controller: 'LinksController'
-      //authenticate: true
-    })
-    .when('/shorten', {
-      templateUrl: 'app/shorten/recipeDisplay.html',
-      controller: 'ShortenController'
+      templateUrl: 'app/search/searchResults.html',
+      controller: 'SearchController'
       //authenticate: true
     })
     .when('/recipe', {
       templateUrl: 'app/recipe/recipe.html',
       controller: 'RecipeController'
+      // authenticate: true
     })
     .otherwise({
       redirectTo: '/search'
@@ -40,6 +33,20 @@ angular.module('umami', [
     // We add our $httpInterceptor into the array
     // of interceptors. Think of it like middleware for your ajax calls
     //$httpProvider.interceptors.push('AttachTokens');
+})
+.controller('MainCtrl', function($scope, $http, UpdateSearch) {
+  $scope.searchText = '';
+  $scope.search = function () {
+    console.log('worked');
+    console.log($scope.searchText);
+    var url = ($scope.searchText !== '') ? '/api/recipes/search/' + $scope.searchText : '/api/recipes/search/all'
+    $http.get(url)
+      .then(function(response) {
+        UpdateSearch.setRecipes(response.data.map((item)=>{return item._source}));
+        console.log('new recipes from search:', UpdateSearch.getRecipes());
+      })
+    $scope.searchText = '';
+  };
 })
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor
