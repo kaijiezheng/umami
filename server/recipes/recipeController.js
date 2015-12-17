@@ -9,7 +9,8 @@ module.exports = function(client) {
     allRecipes: function(req, res, next) {
       client.search({
         index: 'recipes',
-        type: 'recipe'
+        type: 'recipe',
+        size: 30
       })
       .then(function(response) {
         console.log('Succesfully retrieved all recipes');
@@ -37,6 +38,7 @@ module.exports = function(client) {
       client.search({
         index: 'recipes',
         type: 'recipe',
+        size: 30,
         body: {
           query: {
             filtered: {
