@@ -26,7 +26,7 @@ angular.module('umami.services', [])
     addLink: addLink
   };
   })
-.factory('searchResult', function (){
+.factory('searchResult', function() {
     var storage;
 
     function setStorage(data) {
@@ -41,6 +41,22 @@ angular.module('umami.services', [])
       setStorage:setStorage,
       getStorage:getStorage
     }
+})
+.factory('UpdateSearch', function() {
+  var recipes = [];
+
+  function setRecipes(data) {
+    recipes = data;
+  }
+
+  function getRecipes() {
+    return recipes;
+  }
+
+  return {
+    setRecipes: setRecipes,
+    getRecipes: getRecipes
+  }
 })
 .factory('Auth', function ($http, $location, $window) {
   // Don't touch this Auth service!!!
@@ -73,11 +89,11 @@ angular.module('umami.services', [])
   };
 
   var isAuth = function () {
-    return !!$window.localStorage.getItem('com.shortly');
+    return !!$window.localStorage.getItem('com.umami');
   };
 
   var signout = function () {
-    $window.localStorage.removeItem('com.shortly');
+    $window.localStorage.removeItem('com.umami');
     $location.path('/signin');
   };
 
