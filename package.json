@@ -17,6 +17,7 @@
     "gulp-karma": "0.0.4",
     "gulp-nodemon": "^1.0.4",
     "gulp-shell": "^0.2.7",
+    "jsdoc": "^3.4.0",
     "jshint-stylish": "^0.2.0",
     "karma": "^0.12.16",
     "karma-chrome-launcher": "^0.1.4",
@@ -33,6 +34,7 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.4.3",
+    "elastic.js": "fullscale/elastic.js#b29b7d2",
     "elasticsearch": "^10.0.1",
     "express": "^4.4.5",
     "jwt-simple": "^0.2.0",
