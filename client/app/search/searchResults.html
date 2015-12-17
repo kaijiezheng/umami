@@ -1,0 +1,49 @@
+<div class="row search-header" style="text-align:center">
+  <h3 class="upper">{{recipes.length}} Search Results</h3>
+</div>
+<!--this is the code for packery. currently not working. to be debugged for the next iteration-->
+<!--<div class="module-container" workspace>-->
+<!--&lt;!&ndash; sizers &ndash;&gt;-->
+<!--&lt;!&ndash;<div class="module-sizer"></div>&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="gutter-sizer"></div>&ndash;&gt;-->
+<!--{{recipes}}-->
+<!--<div ng-repeat="recipe in recipes track by $index | orderBy:'datePublished'">-->
+<!--<img class="module" ng-class="{'wide': $index%4 === 0}" ng-src="{{recipe.image}}}" onerror=" this.src = 'assets/Recipesfallback.png';" alt="food image">-->
+<!--</div>-->
+<!--</div>-->
+
+<div class="row col-md-12 search" ng-repeat="recipe in recipes track by $index" ng-switch on="$index % 3">
+  <div class="col-md-4" ng-show="recipe" ng-click="goRecipe(recipe)">
+    <div ng-switch-when="0" class="grid">
+      <figure class="effect-julia">
+        <img class="img-responsive" ng-src="{{recipe.image || assets/Recipesfallback.png}}" alt="{{recipes[$index].name}}">
+        <figcaption>
+          <div><p>{{recipe.name}}</p></div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+   <div class="col-md-4" ng-show="recipes[$index+1]" ng-click="goRecipe(recipes[$index+1])">
+    <div ng-switch-when="0" class="grid">
+      <figure class="effect-julia">
+        <img class="img-responsive" ng-src="{{recipes[$index+1].image || assets/Recipesfallback.png}}" alt="{{recipes[$index+1].name}}">
+        <figcaption>
+          <div><p>{{recipes[$index+1].name}}</p></div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+  <div class="col-md-4" ng-show="recipes[$index+2]" ng-click="goRecipe(recipes[$index+2])">
+    <div ng-switch-when="0" class="grid">
+      <figure class="effect-julia">
+        <img class="img-responsive" ng-src="{{recipes[$index+2].image || assets/Recipesfallback.png}}" alt="{{recipes[$index+2].name}}">
+        <figcaption>
+          <div>
+            <p>{{recipes[$index+2].name}}</p>
+          </div>
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
