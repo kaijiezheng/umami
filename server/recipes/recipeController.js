@@ -46,7 +46,10 @@ module.exports = function(client) {
     },
     searchRecipes: function(req, res, next) {
       console.log('Searching for specific recipes');
-      var userQuery = req.path.split('/')[2];
+      console.log(req.path);
+      //multiple search words will be separated by %20, so replace %20 with " "
+      var path = req.path.replace(/%20/g, " ");
+      var userQuery = path.split('/')[2];
       client.search({
         index: 'recipes',
         type: 'recipe',
