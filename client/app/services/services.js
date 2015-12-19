@@ -1,22 +1,12 @@
 angular.module('umami.services', [])
 .factory('searchResult',['$http', function ($http){
-    var storage = {};
 
-    function setStorage(data) {
-      storage = data;
-    }
-
-    function getStorage() {
-      return storage;
-    }
 
     function getRecipe(recipeId) {
       return $http.get('/api/recipes/'+recipeId);
     }
 
     return {
-      setStorage: setStorage,
-      getStorage: getStorage,
       getRecipe: getRecipe
     }
 }])

@@ -40,7 +40,6 @@
     "elastic.js": "fullscale/elastic.js#b29b7d2",
     "elasticsearch": "^10.0.1",
     "express": "^4.4.5",
-    "jwt-simple": "^0.2.0",
     "karma": "^0.12.37",
     "karma-chai": "^0.1.0",
     "karma-unicorn-reporter": "^0.1.4",
@@ -51,7 +50,6 @@
     "passport-local": "^1.0.0",
     "pg": "^4.4.3",
     "q": "^1.0.1",
-    "request": "^2.36.0",
-    "semantic-ui": "^2.1.6"
+    "request": "^2.36.0"
   }
 }

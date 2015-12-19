@@ -3,6 +3,7 @@ angular.module('umami', [
   'umami.search',
   'umami.auth',
   'umami.recipe',
+  'umami.voiceAPI',
   "nlpCompromise",
   'ngRoute'
 ])
@@ -20,11 +21,6 @@ angular.module('umami', [
       templateUrl: 'app/search/searchResults.html',
       controller: 'SearchController'
       //authenticate: true
-    })
-    .when('/recipe', {
-      templateUrl: 'app/recipe/recipe.html',
-      controller: 'RecipeController'
-      // authenticate: true
     })
     .when('/recipe/:recipeId',{
       templateUrl: 'app/recipe/recipe.html',
