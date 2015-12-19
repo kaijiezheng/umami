@@ -1,5 +1,5 @@
-/client/dist
-/client/lib
+client/dist
+client/lib
 # Logs
 logs
 *.log

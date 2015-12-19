@@ -41,6 +41,7 @@
     "elasticsearch": "^10.0.1",
     "express": "^4.4.5",
     "jwt-simple": "^0.2.0",
+    "karma": "^0.12.37",
     "karma-chai": "^0.1.0",
     "karma-unicorn-reporter": "^0.1.4",
     "mocha": "^1.21.5",

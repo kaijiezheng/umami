@@ -55,7 +55,7 @@ describe('search result controller', function () {
     var $controller = $injector.get('$controller');
 
     createController = function() {
-      return $controller('LinksController', {'$scope' : $scope });
+      return $controller('SearchController', {'$scope' : $scope });
     };
 
   }));

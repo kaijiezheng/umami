@@ -1,7 +1,8 @@
 angular.module('umami.recipe', ['ngRoute'])
 
-  .controller('RecipeController', ['$scope', 'searchResult', 'nlp', function ($scope, searchResult, nlp) {
+  .controller('RecipeController', ['$scope', 'searchResult', 'nlp','$routeParams', function ($scope, searchResult, nlp, $routeParams) {
     var currentStep = 0;
+    $scope.params = $routeParams;
     var instructionKeywords={
       next:function(){
         return currentStep < $scope.recipe.instructions.length ? $scope.recipe.instructions[++currentStep] : "you are at the end";
@@ -14,22 +15,15 @@ angular.module('umami.recipe', ['ngRoute'])
       }
     };
     var parsing = false;
-
-    var recipe = searchResult.getStorage() || {
-      "id": "5160d4f896cc620d188cb475",
-        //?api/recipe/5160d4f896cc620d188cb475
-      "name": "Lemon and Fresh Herb Tabbouleh",
-      "source": "epicurious",
-      "url": "http://www.epicurious.com/recipes/food/views/Lemon-and-Fresh-Herb-Tabbouleh-355892",
-      "recipeYield": "Makes 8 servings",
-      "ingredients": ["1/2 cup medium- or fine-grain bulgur", "2 tablespoons extra virgin olive oil", "2 garlic cloves, minced", "2 cups finely chopped fresh flat-leaf parsley (about 3 bunches)", "3/4 cup diced red onion", "2 medium tomatoes, seeded and diced", "1/3 cup finely chopped fresh mint", "1/4 cup finely chopped fresh basil", "3 tablespoons finely chopped fresh dill", "3 tablespoons finely chopped fresh cilantro", "1/3 cup fresh lemon juice"],
-      "datePublished": "2009-03-01",
-      "description": null,
-      "image": "http://assets.epicurious.com/photos/5609a75e62fa7a9917c25aa0/master/pass/355892.jpg",
-      "instructions": ["Bring a kettle of water to a boil.", "Stir together the bulgur and 1 tablespoon of the oil in a heatproof bowl.", "Add boiling water to cover.", "Cover the bowl tightly with plastic wrap and let stand for 15 minutes.", "Drain in a sieve, pressing on the bulgur to remove any excess liquid.", "Transfer the bulgur to a large bowl and toss with the remaining 1 tablespoon oil and the rest of the ingredients until everything is well mixed.", "Cover and refrigerate for at least 3 hours.", "Serve cold."]
-    };
-    recipe.instructions = recipe.instructions.filter(item=> item.length>3)
-    $scope.recipe = recipe;
+    var recipeId = $routeParams.recipeId || '5160d4f896cc620d188cb475';
+    var recipe;
+    searchResult.getRecipe(recipeId)
+      .then(function (response){
+        recipe = response.data[0]._source;
+        console.log("recipe = ", recipe);
+        recipe.instructions = recipe.instructions.filter(item=> item.length>3);
+        $scope.recipe = recipe;
+      });
 
     //console.log(recipe);
     var prevLength;
