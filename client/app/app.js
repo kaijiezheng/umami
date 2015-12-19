@@ -38,18 +38,18 @@ angular.module('umami', [
     // of interceptors. Think of it like middleware for your ajax calls
     //$httpProvider.interceptors.push('AttachTokens');
 })
-.controller('MainCtrl', function($scope, $http, UpdateSearch) {
-  $scope.searchText = '';
-  $scope.search = function () {
+.controller('MainCtrl', function($http, UpdateSearch) {
+  this.searchText = '';
+  this.search = function () {
     // If query is empty string, default to query-less GET request
-    var url = ($scope.searchText !== '') ? '/api/recipes/search/' + $scope.searchText : '/api/recipes/search/all'
+    var url = (this.searchText !== '') ? '/api/recipes/search/' + this.searchText : '/api/recipes/search/all'
 
     UpdateSearch.searchRecipes(url)
       .then(function(response) {
         console.log('successfully retrieved recipes from search');
         UpdateSearch.setRecipes(response.data.map((item)=>{return item._source}));
       });
-    $scope.searchText = '';
+    this.searchText = '';
   };
 })
 .factory('AttachTokens', function ($window) {
