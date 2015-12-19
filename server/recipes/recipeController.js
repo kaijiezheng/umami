@@ -1,3 +1,8 @@
+/**
+ * A module that contains all functions to handle recipe requests
+ * @module recipes/recipeController
+ */
+
 // Elasticsearch client
 // Will not need Q given that it comes packages with elasticsearch
 var Q = require('q');
@@ -6,6 +11,13 @@ var util = require('../config/utils.js');
 
 module.exports = function(client) {
   return {
+    /**
+     * Retrieve all recipes in database.
+     * @method allRecipes
+     * @param {object} req - Contains request parameters.
+     * @param {object} res - Contains response parameters.
+     * @param {function} next - Calls next middleware.
+     */
     allRecipes: function(req, res, next) {
       client.search({
         index: 'recipes',

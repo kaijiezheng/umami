@@ -1,18 +1,17 @@
 /**
- * A module that contains all functions to handle tour requests
+ * A module that contains all functions to handle errors and decode tokens.
  * @module config/helpers
- * @require jwt-simple
  */
 var jwt = require('jwt-simple');
 
 /**
  * Helper functions for error logging and token decoding.
- *
  */
 module.exports = {
   /**
    * Error logging middleware.
-   * @param {error} error - The error that was encountered.
+   * @method errorLogger
+   * @param {object} error - The error that was encountered.
    * @param {object} req - Contains request parameters.
    * @param {object} res - Contains response parameters.
    * @param {function} next - Calls next middleware.
@@ -22,10 +21,27 @@ module.exports = {
     console.error(error.stack);
     next(error);
   },
+
+  /**
+   * Error handling middleware.
+   * @method errorHandler
+   * @param {object} error - The error that was encountered.
+   * @param {object} req - Contains request parameters.
+   * @param {object} res - Contains response parameters.
+   * @param {function} next - Calls next middleware.
+   */
   errorHandler: function (error, req, res, next) {
     // Send error message to client for graceful error handling
     res.send(500, {error: error.message});
   },
+
+  /**
+   * Token decoder.
+   * @method decode
+   * @param {object} req - Contains request parameters.
+   * @param {object} res - Contains response parameters.
+   * @param {function} next - Calls next middleware.
+   */
   decode: function (req, res, next) {
     var token = req.headers['x-access-token'];
     var user;
