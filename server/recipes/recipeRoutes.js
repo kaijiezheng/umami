@@ -1,4 +1,3 @@
-
 module.exports = function (app, client) {
   var recipeController = require('./recipeController.js')(client);
   // app is actually the recipeRouter injected from middleware.js
