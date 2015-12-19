@@ -74,7 +74,40 @@ module.exports = function(client) {
         console.log('Error in retrieving all recipes', error.message);
         next(error);
       });
+    },
+    getRecipe: function (req, res, next) {
+      console.log('req.params = ',req.params)
+      client.search({
+        index: 'recipes',
+        type: 'recipe',
+        size: 1,
+        body: {
+          query: {
+            filtered: {
+              query: {
+                match: {
+                  // match the query agains all of
+                  // the fields in the posts index
+                  id: req.params.recipeId
+                }
+              }
+            }
+          }
+        }
+      })
+      .then(function(response) {
+        console.log('Succesfully retrieved all recipes');
+        // Returns an array of hits
+        res.json(response.hits.hits);
+        next();
+      }, function(error) {
+        console.log('Error in retrieving all recipes', error.message);
+        next(error);
+      });
     }
+
+
+
   }
 };
 

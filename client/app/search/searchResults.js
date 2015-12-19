@@ -29,7 +29,7 @@ angular.module('umami.search', [])
   $scope.$watch(function() {
     return UpdateSearch.getRecipes();
   }, function(){
-      $scope.recipes = UpdateSearch.getRecipes(); 
+      $scope.recipes = UpdateSearch.getRecipes();
   }, true);
 
 

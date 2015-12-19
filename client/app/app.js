@@ -26,6 +26,10 @@ angular.module('umami', [
       controller: 'RecipeController'
       // authenticate: true
     })
+    .when('/recipe/:recipeId',{
+      templateUrl: 'app/recipe/recipe.html',
+      controller: 'RecipeController'
+    })
     .otherwise({
       redirectTo: '/search'
     });
