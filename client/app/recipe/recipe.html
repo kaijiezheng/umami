@@ -6,17 +6,17 @@
     <div class="col-md-7">
       <div class="summaryTable">
         <h3 class="recipeName">{{recipe.name}}</h3>
+        <table>
+          <tr>
+            <td><p class="head">Ratings</p><p class="body">4.5</p><p class="foot"><a href="#">168 reviews</a></p></td>
+            <!--TODO: stars instead of number for ratings-->
+            <td><p class="head">Time</p><p class="body">25</p><p class="foot">Minutes<p></td>
+            <td><p class="head">Ingredients</p><p class="body">{{recipe.ingredients.length}}</p><p class="foot">Count</p></td>
+            <!--TODO: add YIELD information in a <td>-->
+            <td><p ng-click="startRecord()" class="body"><i class="fa fa-microphone listen"></i></p><p class="foot">Start</p></td>
+          </tr>
+        </table>
       </div>
-      <table>
-        <tr>
-          <td><p class="head">Ratings</p><p class="body">4.5</p><p class="foot"><a href="#">168 reviews</a></p></td>
-          <!--TODO: stars instead of number for ratings-->
-          <td><p class="head">Time</p><p class="body">25</p><p class="foot">Minutes<p></td>
-          <td><p class="head">Ingredients</p><p class="body">{{recipe.ingredients.length}}</p><p class="foot">Count</p></td>
-          <!--TODO: add YIELD information in a <td>-->
-          <td><p ng-click="startRecord()" class="body"><i class="fa fa-microphone listen"></i></p><p class="foot">Start</p></td>
-        </tr>
-      </table>
     </div>
   </div>
   <div class="row instructions">
