@@ -41,14 +41,14 @@ angular.module('umami', [
 .controller('MainCtrl', function($scope, $http, UpdateSearch) {
   $scope.searchText = '';
   $scope.search = function () {
-    console.log('worked');
-    console.log($scope.searchText);
+    // If query is empty string, default to query-less GET request
     var url = ($scope.searchText !== '') ? '/api/recipes/search/' + $scope.searchText : '/api/recipes/search/all'
-    $http.get(url)
+
+    UpdateSearch.searchRecipes(url)
       .then(function(response) {
+        console.log('successfully retrieved recipes from search');
         UpdateSearch.setRecipes(response.data.map((item)=>{return item._source}));
-        console.log('new recipes from search:', UpdateSearch.getRecipes());
-      })
+      });
     $scope.searchText = '';
   };
 })
