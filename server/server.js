@@ -23,7 +23,7 @@ var elasticsearch = require('elasticsearch');
 // Elasticsearch server is setup here and exported for modularity
 var client = new elasticsearch.Client({
   host: DB_HOST,
-  log: 'trace'
+  log: 'error'
 });
 
 // Configure our server with all the middleware and and routing

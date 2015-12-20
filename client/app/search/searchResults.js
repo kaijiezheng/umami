@@ -1,6 +1,7 @@
 angular.module('umami.search', [])
-.controller('SearchController', ['$scope', '$http', 'searchResult', 'UpdateSearch', '$location', function($scope, $http, searchResult, UpdateSearch, $location) {
+.controller('SearchController', ['$scope', '$http', 'searchResult', 'UpdateSearch', 'voiceAPI', function($scope, $http, searchResult, UpdateSearch, voiceAPI) {
   $scope.recipes = UpdateSearch.getRecipes() || [];
+  voiceAPI.stop();
 
   // When controller first loaded, initialize with recipes
   if ($scope.recipes.length === 0) {
@@ -16,11 +17,6 @@ angular.module('umami.search', [])
       });
   }
 
-  $scope.goRecipe = function(data){
-    console.log(data);
-    searchResult.setStorage(data);
-    $location.path('/recipe')
-  };
 
   // Watch for changes in recipes due to new search, necessary because of two controllers
   $scope.$watch(function() {
@@ -28,24 +24,4 @@ angular.module('umami.search', [])
   }, function(){
       $scope.recipes = UpdateSearch.getRecipes();
   }, true);
-
-}])
-.directive('workspace', ['$rootScope', function($rootScope) {
-  return {
-    constrain: 'A',
-    link: function(scope, element, attrs) {
-      element.ready(function() {
-        var packery = new Packery(element[0], {
-          rowHeight: '.module-sizer',
-          itemSelector: '.module',
-          columnWidth: '.module-sizer'
-        });
-        angular.forEach(packery.getItemElements(), function(item) {
-          var draggable = new Draggabilly(item);
-          packery.bindDraggabillyEvents(draggable);
-        });
-        packery.layout();
-      });
-    }
-  };
 }]);
