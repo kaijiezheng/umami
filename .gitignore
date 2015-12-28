@@ -38,5 +38,7 @@ mean.iml
 /app/components
 .idea/
 
-/server/elasticSearchDb
 recipeitems-latest copy.json.zip
+
+karma.conf.js
+
