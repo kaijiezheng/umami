@@ -43,7 +43,7 @@ angular.module('umami', [
     UpdateSearch.searchRecipes(url)
       .then(function(response) {
         console.log('successfully retrieved recipes from search');
-        UpdateSearch.setRecipes(response.data.map((item)=>{return item._source}));
+        UpdateSearch.setRecipes(response.data.map(item=>item._source));
       });
     this.searchText = '';
   };
