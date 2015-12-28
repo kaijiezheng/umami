@@ -1,6 +1,6 @@
 /* Walkthrough of the server
 
-  Express, elasticsearch, mongoose, and our server are initialzed here
+  Express, elasticsearch, mongoose, and our server are initialized here
   Next, we then inject our server and express into our config/middleware.js file for setup.
   We also exported our server for easy testing
 
