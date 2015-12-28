@@ -19,12 +19,18 @@ var DB_HOST = process.env.HOST || 'localhost:9200';
 var express = require('express');
 var app = express();
 var elasticsearch = require('elasticsearch');
+var mongoose = require('mongoose');
+
 
 // Elasticsearch server is setup here and exported for modularity
 var client = new elasticsearch.Client({
   host: DB_HOST,
   log: 'error'
 });
+
+// connect to mongo database named umami
+mongoose.connect('mongodb://localhost/umami');
+
 
 // Configure our server with all the middleware and and routing
 require('./config/middleware.js')(app, express, client);
