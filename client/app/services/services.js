@@ -9,7 +9,7 @@ angular.module('umami.services', [])
     return {
       getRecipe: getRecipe
     }
-}])
+}]) 
 .factory('UpdateSearch', function($http) {
   var recipes = [];
 
