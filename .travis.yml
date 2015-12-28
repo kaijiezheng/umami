@@ -1,7 +1,9 @@
 language: node_js
 node_js:
-  - '0.10'
+  - "4.1"
+  - "4.0"
+before_script:
+  - bower install
+  - npm install
 env:
   - NODE_ENV=travis
-services:
-  - mongodb
