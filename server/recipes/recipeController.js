@@ -55,13 +55,22 @@ module.exports = function(client) {
         type: 'recipe',
         size: 30,
         body: {
+          // "query": {
+          //   "match": {
+          //     "text": {
+          //       "query": userQuery,
+          //       "fuzziness": "AUTO",
+          //       "operator": "and"
+          //     }
+          //   }
+          // }
           query: {
             filtered: {
-              query: {
-                match: {
+                query: {
+                  match: {
                   // match the query agains all of
                   // the fields in the posts index
-                  _all: userQuery
+                    _all: userQuery
                 }
               }
             }
