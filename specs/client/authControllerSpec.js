@@ -32,11 +32,7 @@ describe('AuthController', function () {
   afterEach(function () {
     $httpBackend.verifyNoOutstandingExpectation();
     $httpBackend.verifyNoOutstandingRequest();
-<<<<<<< HEAD
     $window.localStorage.removeItem('com.umami');
-=======
-    $window.localStorage.removeItem('com.shortly');
->>>>>>> c14a1a33c48a4cc0d2f34c0849d1cd815053c80a
   });
 
   it('should have a signup method', function () {
@@ -51,11 +47,7 @@ describe('AuthController', function () {
     $httpBackend.expectPOST('/api/users/signup').respond({token: token});
     $scope.signup();
     $httpBackend.flush();
-<<<<<<< HEAD
     expect($window.localStorage.getItem('com.umami')).to.be(token);
-=======
-    expect($window.localStorage.getItem('com.shortly')).to.be(token);
->>>>>>> c14a1a33c48a4cc0d2f34c0849d1cd815053c80a
   });
 
   it('should have a signin method', function () {
@@ -68,10 +60,6 @@ describe('AuthController', function () {
     $httpBackend.expectPOST('/api/users/signin').respond({token: token});
     $scope.signin();
     $httpBackend.flush();
-<<<<<<< HEAD
-    expect($window.localStorage.getItem('com.unami')).to.be(token);
-=======
-    expect($window.localStorage.getItem('com.shortly')).to.be(token);
->>>>>>> c14a1a33c48a4cc0d2f34c0849d1cd815053c80a
+    expect($window.localStorage.getItem('com.umami')).to.be(token);
   });
 });
