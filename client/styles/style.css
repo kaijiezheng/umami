@@ -225,7 +225,8 @@ div.summary h3 {
 div.instructions {
   margin: 1em 0 0 0;
 }
-img.related {
+
+img.responsive {
   margin-bottom: 0.25em;
   border: solid 1px #eee;
 }
