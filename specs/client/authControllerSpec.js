@@ -60,6 +60,6 @@ describe('AuthController', function () {
     $httpBackend.expectPOST('/api/users/signin').respond({token: token});
     $scope.signin();
     $httpBackend.flush();
-    expect($window.localStorage.getItem('com.unami')).to.be(token);
+    expect($window.localStorage.getItem('com.umami')).to.be(token);
   });
 });
