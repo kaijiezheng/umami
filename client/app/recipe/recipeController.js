@@ -2,7 +2,6 @@ angular.module('umami.recipe', ['ngRoute'])
 .controller('RecipeController', ['$scope', 'searchResult', '$routeParams','voiceAPI', function ($scope, searchResult, $routeParams,voiceAPI) {
   var recipeId = $routeParams.recipeId || '5160d4f896cc620d188cb475';
   $scope.recipe = {};
-  $scope.params = $routeParams;
   searchResult.getRecipe(recipeId)
     .then(function(response) {
       if (response) {
@@ -11,7 +10,6 @@ angular.module('umami.recipe', ['ngRoute'])
         console.log("Recipe:", $scope.recipe);
         $scope.voice = voiceAPI.start($scope.recipe);
       } else {
-        $scope.recipe = BACKUP_RECIPE;
         $scope.voice = voiceAPI($scope.recipe);
       }
     });
