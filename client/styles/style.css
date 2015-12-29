@@ -225,16 +225,8 @@ div.summary h3 {
 div.instructions {
   margin: 1em 0 0 0;
 }
-<<<<<<< HEAD
-img.related {
-=======
-/*img.responsive.recipe {
-  width: 350px;
-  height: 220px;
-}*/
+
 img.responsive {
-  /*max-height: 75px;*/
->>>>>>> 4524a18d6e8e8be720e0f261efefec3fd8c09cd4
   margin-bottom: 0.25em;
   border: solid 1px #eee;
 }
