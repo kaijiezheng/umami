@@ -32,7 +32,7 @@ describe('AuthController', function () {
   afterEach(function () {
     $httpBackend.verifyNoOutstandingExpectation();
     $httpBackend.verifyNoOutstandingRequest();
-    $window.localStorage.removeItem('com.shortly');
+    $window.localStorage.removeItem('com.umami');
   });
 
   it('should have a signup method', function () {
@@ -47,7 +47,7 @@ describe('AuthController', function () {
     $httpBackend.expectPOST('/api/users/signup').respond({token: token});
     $scope.signup();
     $httpBackend.flush();
-    expect($window.localStorage.getItem('com.shortly')).to.be(token);
+    expect($window.localStorage.getItem('com.umami')).to.be(token);
   });
 
   it('should have a signin method', function () {
@@ -60,6 +60,6 @@ describe('AuthController', function () {
     $httpBackend.expectPOST('/api/users/signin').respond({token: token});
     $scope.signin();
     $httpBackend.flush();
-    expect($window.localStorage.getItem('com.shortly')).to.be(token);
+    expect($window.localStorage.getItem('com.unami')).to.be(token);
   });
 });
