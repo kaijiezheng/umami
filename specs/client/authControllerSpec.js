@@ -3,7 +3,7 @@ describe('AuthController', function () {
 
   // using angular mocks, we can inject the injector
   // to retrieve our dependencies
-  beforeEach(module('shortly'));
+  beforeEach(module('umami'));
   beforeEach(inject(function ($injector) {
 
     // mock out our dependencies
@@ -63,3 +63,6 @@ describe('AuthController', function () {
     expect($window.localStorage.getItem('com.umami')).to.be(token);
   });
 });
+
+
+
