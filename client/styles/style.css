@@ -31,6 +31,9 @@ i.search {
 .nav-right {
   margin-top: 2em;
 }
+a.light-login {
+  background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w…c0-1.207%202.004-1.293%202.004-.086v9.068z%22%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E");
+}
 .separator {
   border: solid 1px #eee;
   padding: 0.7em 0 0.7em 10em;
