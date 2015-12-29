@@ -235,6 +235,7 @@ img.responsive {
 .summaryTable {
   background-color: #f5f5f5;
   padding:10px;
+  height: auto;
 }
 .recipeName{
   font-family: "acta-display",Georgia,serif;
