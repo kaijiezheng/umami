@@ -43,11 +43,11 @@ describe('AuthController', function () {
     // create a fake JWT for auth
     var token = 'sjj232hwjhr3urw90rof';
 
-    // make a 'fake' reques to the server, not really going to our server
+    // make a 'fake' request to the server, not really going to our server
     $httpBackend.expectPOST('/api/users/signup').respond({token: token});
     $scope.signup();
     $httpBackend.flush();
-    expect($window.localStorage.getItem('com.umami')).to.be(token);
+    expect($window.localStorage.getItem('com.umami')).to.be.equal(token);
   });
 
   it('should have a signin method', function () {
@@ -60,7 +60,8 @@ describe('AuthController', function () {
     $httpBackend.expectPOST('/api/users/signin').respond({token: token});
     $scope.signin();
     $httpBackend.flush();
-    expect($window.localStorage.getItem('com.umami')).to.be(token);
+    console.log($window.localStorage.getItem('com.umami'));
+    expect($window.localStorage.getItem('com.umami')).to.be.equal(token);
   });
 });
 

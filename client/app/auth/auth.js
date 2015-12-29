@@ -11,6 +11,7 @@ angular.module('umami.auth', [])
     Auth.signin($scope.user)
       .then(function (token) {
         $window.localStorage.setItem('com.umami', token);
+        console.log($window.localStorage);
         $location.path('/search');
       })
       .catch(function (error) {
@@ -25,6 +26,7 @@ angular.module('umami.auth', [])
       .then(function (token) {
         $window.localStorage.setItem('com.umami', token);
         $location.path('/signin');
+        console.log($window.localStorage);
       })
       .catch(function (error) {
         console.error(error);
