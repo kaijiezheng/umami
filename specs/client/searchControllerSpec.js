@@ -49,18 +49,6 @@ describe('search result controller', function () {
     expect($scope.recipes).to.deep.equal([{name:'hello'}])
   });
 
-  xit('should updateData with Search', function(){
-    var controller = createController();
-    $scope.searchText = 'apples';
-    $httpBackend.expectGET('/api/recipes/search/apples').respond(200,
-      [{
-        _source: {
-          name:'hi'
-        }
-      }]
-    );
-    $httpBackend.flush();
-    expect($scope.recipes).to.deep.equal([{name:'hi'}])
-  })
+
 
 });
