@@ -33,7 +33,7 @@ module.exports = function(config) {
     // preprocess matching files before serving them to the browser
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
-      'client/app/**/*.js': ['babel']
+      'client/app/**/*.js': ['babel', 'coverage']
     },
     babelPreprocessor: {
       options: {
@@ -52,7 +52,7 @@ module.exports = function(config) {
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress','nyan','unicorn'],
+    reporters: ['progress','nyan','unicorn', 'coverage'],
 
 
     // web server port
