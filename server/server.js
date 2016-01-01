@@ -14,7 +14,8 @@
 */
 
 var SERVER_PORT = process.env.PORT || '8000';
-var DB_HOST = process.env.HOST || 'localhost:9200';
+//var DB_HOST = process.env.HOST || 'localhost:9200';
+var DB_HOST = "search-recipes-dzmzolpqt767iq62hozmwgi6nm.us-west-1.es.amazonaws.com" ;
 
 var express = require('express');
 var app = express();

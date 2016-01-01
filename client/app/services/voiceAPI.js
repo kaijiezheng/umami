@@ -3,6 +3,7 @@
  */
 angular.module('umami.voiceAPI', [])
   .factory('voiceAPI', ['nlp', function (nlp) {
+    console.log('factory called')
     var recognizer;
     var stop = false;
     return {
@@ -19,15 +20,23 @@ angular.module('umami.voiceAPI', [])
           },
           repeat: function () {
             return recipe.instructions[currentStep];
+          },
+          ingredients:function(){
+            return recipe.ingredients.join('.');
+          },
+          directions:function(){
+            return recipe.instructions.join('.');
+          },
+          help:function(){
+            return "you can say directions, ingredients, next, previous, or repeat";
           }
         };
 
 
         var u = new SpeechSynthesisUtterance();
         u.rate = .8;
-        u.text = 'Lets have some tea';
-        u.lang = 'en-UK';
-        //speechSynthesis.speak(u);
+        u.text = '';
+        u.lang = 'en-US';
 
         recognizer = new webkitSpeechRecognition();
         recognizer.continuous = true;
@@ -36,17 +45,17 @@ angular.module('umami.voiceAPI', [])
 
         // Only start speaking when recognizer ends so that it doesn't listen to itself
         recognizer.onend = function () {
+          console.log('Recognizer ended');
           speechSynthesis.speak(u);
           prevLength = 0;
-          console.log('Recognizer ended');
         };
 
         // Start recognizer after computer is finished speaking
         u.onend = function () {
           parsing = false;
           if (!stop) {
-            recognizer.start();
             console.log('Done talking!');
+            recognizer.start();
           }
         };
 
