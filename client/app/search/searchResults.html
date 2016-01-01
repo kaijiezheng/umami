@@ -18,8 +18,9 @@
       <a ng-href="/#/recipe/{{recipe.id}}">
         <figure class="effect-julia">
           <img class="img-responsive" ng-src="{{recipe.image || assets/Recipesfallback.png}}" alt="{{recipes[$index].name}}">
+          <div><h6>{{recipe.name}}</h6></div>
           <figcaption>
-            <div><p>{{recipe.name}}</p></div>
+            <div><p>{{recipe.recipeYield}}</p></div>
           </figcaption>
         </figure>
       </a>
@@ -30,8 +31,9 @@
       <a ng-href="/#/recipe/{{recipes[$index+1].id}}">
         <figure class="effect-julia">
           <img class="img-responsive" ng-src="{{recipes[$index+1].image || assets/Recipesfallback.png}}" alt="{{recipes[$index+1].name}}">
+          <div><h6>{{recipes[$index+1].name}}</h6></div>
           <figcaption>
-            <div><p>{{recipes[$index+1].name}}</p></div>
+            <div><p>{{recipes[$index+1].recipeYield}}</p></div>
           </figcaption>
         </figure>
       </a>
@@ -39,13 +41,14 @@
   </div>
   <div class="col-md-4" ng-show="recipes[$index+2]" ng-click="goRecipe(recipes[$index+2])">
     <div ng-switch-when="0" class="grid">
-      <a ng-href="/#/recipe/{{recipes[$index+1].id}}">
+      <a ng-href="/#/recipe/{{recipes[$index+2].id}}">
 
         <figure class="effect-julia">
           <img class="img-responsive" ng-src="{{recipes[$index+2].image || assets/Recipesfallback.png}}" alt="{{recipes[$index+2].name}}">
+          <div><h6>{{recipes[$index+2].name}}</h6></div>
           <figcaption>
             <div>
-              <p>{{recipes[$index+2].name}}</p>
+              <p>{{recipes[$index+2].recipeYield}}</p>
             </div>
           </figcaption>
         </figure>
