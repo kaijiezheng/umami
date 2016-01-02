@@ -3,7 +3,6 @@
  */
 angular.module('umami.voiceAPI', [])
   .factory('voiceAPI', ['nlp', function (nlp) {
-    console.log('factory called')
     var recognizer;
     var stop = false;
     return {
