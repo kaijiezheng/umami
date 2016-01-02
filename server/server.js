@@ -29,10 +29,6 @@ var client = new elasticsearch.Client({
   log: 'error'
 });
 
-// connect to mongo database named umami
-mongoose.connect('mongodb://localhost/umami');
-
-
 // Configure our server with all the middleware and and routing
 require('./config/middleware.js')(app, express, client);
 
