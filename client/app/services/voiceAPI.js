@@ -3,10 +3,12 @@
  */
 angular.module('umami.voiceAPI', [])
   .factory('voiceAPI', ['nlp', function (nlp) {
+    console.log('factory started')
     var recognizer;
     var stop = false;
     return {
       start: function (recipe) {
+        console.log('recipe started', recipe);
         var currentStep = -1;
         var parsing = false;
         var prevLength = 0;
@@ -186,5 +188,4 @@ angular.module('umami.voiceAPI', [])
         }
       }
     }
-
   }]);
